@@ -2,21 +2,49 @@
 
 Please make sure you follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-The first place to look is our [documentation](/wiki).
+## Documentation
+
+The first place to look for answers is our:
+
+- [Official Documentation](https://github.com/{username}/{repo}/wiki)
+- [Frequently Asked Questions](https://github.com/{username}/{repo}/wiki/FAQ)
+- [Troubleshooting Guide](https://github.com/{username}/{repo}/wiki/Troubleshooting)
 
 ## I Have a Question
 
-- Open a [Q&A](/discussions/new?category=q-a).
-- Provide as much context as you can about what you're running into.
-- Paste the content of the "About" dialog.
+Before asking a question:
 
-## Before you Open a New Issue
+1. Search existing [Discussions](https://github.com/{username}/{repo}/discussions) to see if your question has been answered
+2. Review the [documentation](https://github.com/{username}/{repo}/wiki)
+3. Check the [FAQ](https://github.com/{username}/{repo}/wiki/FAQ)
 
-- Please ensure that you are using the latest version.
-- Check to see if there is an existing [Bug Report](/labels/bug), [Feature Request](/labels/feature), or [Documentation Request](/labels/documentation).
+If you still need help:
+
+1. Open a [Q&A Discussion](https://github.com/{username}/{repo}/discussions/new?category=q-a)
+2. Use a descriptive title
+3. Provide as much context as possible:
+   + Version you're using
+   + Environment details (OS, runtime versions, etc.)
+   + Steps to reproduce
+   + Relevant logs or screenshots
+   + Content of the "About" dialog
+
+## Before Opening a New Issue
+
+1. Ensure you are using the latest version
+2. Search through existing issues:
+   + [Bug Reports](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Abug)
+   + [Feature Requests](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Aenhancement)
+   + [Documentation Requests](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Adocumentation)
 
 ## Opening a New Issue
 
-- [Open a new Bug Report](/issues/new?template=bug_report.yml).
-- [Open a new Feature Request](/issues/issues/new?template=feature_request.yml)
-- [Open a new Documentation Request](/issues/new?template=documentation_request.yml)
+Choose the appropriate template:
+
+- [🐛 Bug Report](https://github.com/{username}/{repo}/issues/new?template=bug_report.yml)
+- [💡 Feature Request](https://github.com/{username}/{repo}/issues/new?template=feature_request.yml)
+- [📚 Documentation Request](https://github.com/{username}/{repo}/issues/new?template=documentation_request.yml)
+
+Please provide as much information as possible when opening an issue. The more details you provide, the better we can help you.
+
+> **Note:** Replace `{username}` and `{repo}` in links with your GitHub username and repository name when using this template.
