@@ -4,7 +4,6 @@ We strive to be an egalitarian, ethical, transparent organization. This commitme
 
 ## Core Values
 
-
 1. We shall only take actions that respect and support the fundamental, inalienable rights of individuals to the resources required to support their life and enjoyment of that life, including but not limited to clean air, clean water, nutritious food, health and health care, education, liberty of person, security of person, and freedom of thought and belief.
 2. We shall treat each individual equally and respectfully regardless of taxonomic classification, biology, association, thought or belief, social status, or other attributes.
 3. Every member of our organization must take responsibility and shall be accountable for their decisions, actions, and the consequences.
@@ -66,6 +65,25 @@ Examples of behavior that contributes to a positive environment for our communit
 - Contributing material with questionable legal status, e.g. copyright
 - Plagarism
 
+## Scope
+
+This Code of Conduct applies within all community spaces, including but not limited to:
+
+- Project repositories
+- Issue trackers
+- Discussion forums
+- Social media channels
+- Public and private events
+- Any other spaces where you are representing our community
+
+## Enforcement Process
+
+1. **Report Reception**: All reports will be reviewed within 72 hours
+2. **Investigation**: Community leaders will investigate reported violations
+3. **Decision**: Appropriate action will be taken based on the severity
+4. **Communication**: Both reporter and reported party will be informed of decisions
+5. **Appeals**: Temporary bans may be appealed through designated channels
+
 ## Enforcement Responsibilities
 
 We and our community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that we deem inappropriate, threatening, offensive, or harmful.
@@ -77,3 +95,8 @@ We have the responsibility and right to remove, edit, or reject comments, commit
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported using the GitHub "Report Content" feature. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders shall respect the privacy and security of the reporter of any incident.
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/),
+version 2.1, available at <https://www.contributor-covenant.org/version/2/1/code_of_conduct.html>.

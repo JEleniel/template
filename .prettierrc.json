@@ -19,7 +19,7 @@
 			"files": ["*.md", "*.markdown"],
 			"options": {
 				"tabWidth": 4,
-				"useTabs": false
+				"useTabs": true
 			}
 		}
 	],

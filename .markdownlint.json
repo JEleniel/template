@@ -29,8 +29,8 @@
 	"link-image-style": {
 		"autolink": true,
 		"collapsed": false,
-		"full": ,
-		"inline": ,
+		"full": true,
+		"inline": true,
 		"shortcut": false
 	},
 	"list-indent": true,
@@ -48,15 +48,8 @@
 	},
 	"no-emphasis-as-heading": true,
 	"no-empty-links": true,
-	"no-hard-tabs": {
-		"code_blocks": false,
-		"spaces_per_tab": 4
-	},
-	"no-inline-html": {
-		"allowed_elements": [
-			"img"
-		]
-	},
+	"no-hard-tabs": false,
+	"no-inline-html": false,
 	"no-missing-space-atx": true,
 	"no-multiple-blanks": true,
 	"no-multiple-space-atx": true,
@@ -90,5 +83,4 @@
 	"ul-style": {
 		"style": "sublist"
 	}
-}
 }
