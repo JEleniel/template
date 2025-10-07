@@ -6,9 +6,16 @@
 - Respect the `.gitignore` file; do not read or modify files listed in it.
 - Do not modify files in the `.github` or `.prompts` folders.
 
-## Coding Standards
+- Place documentation `docs/` folder, with a `docs/README.md` as the entry point.
+    + Design documentation must be in the `docs/design/` folder.
+    + Files in the `docs/design/agents/` folder are for machine agent use.
+- Respect the `.gitignore` file; do not read or modify files listed in it unless otherwise instructed.
+- You may read, but not modify files in the `.github` folder.
+    + The `.github/templates/` folder contains examples for various files, named with the additional extension `.template` that must be remooved.
+    + All other folders in `.github` should be ignored.
+- Other dot folders (e.g. `.analyze`) are used by various tooling and should be ignored.
 
-### Priorities
+## Secrets and security
 
 1. Security
 2. Robustness
