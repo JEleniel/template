@@ -1,20 +1,25 @@
-# Documentation Overview
+# Documentation
 
-This directory contains documentation for {project}.
+_This will be the starting point for all documentation for the project. Documentation must be ready for deployment using GitHub pages and Jekyll._
 
-> [!NOTE] This is a template file. Update this file to match your project's documentation needs._
+## Getting Started
 
-## Templates
+- [Main README](../README.md) - Project overview, features, and quick start guide
+- [Contributing Guidelines](../CONTRIBUTING.md) - Development setup and contribution process
+- [Code of Conduct](../CODE_OF_CONDUCT.md) - Community guidelines and standards
 
-- [Icons](Icons.md): Icon specifications and usage guidance.
-- [System Architecture Patterns](SystemArchitecturePatterns.md): Common architecture patterns and recommendations.
+## User Guides
 
-## Customization
+_Either add short guides heree or link to full guides._
 
-Replace or expand these files to document your project's API, architecture, usage, and other details.
-Cross-reference related documentation and update links to use your repository's `{username}` and `{repo}` placeholders.
+## Examples
 
-## Example Links
+_Link to documentaton for each example in the project._
 
-- [API Reference](api/README.md)
-- [Architecture Overview](design/architecture.md)
+## Developer Documentation
+
+_Provide an overview of getting set up as a developer and provide links to more detailed documentation, including the designs._
+
+## API Documentation
+
+_If the project exposes an API provide an overview of it here and link to detailed (Swagger) documentation. If not, remove this section._

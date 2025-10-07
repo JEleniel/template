@@ -4,18 +4,12 @@
 
 - You may use any MCP servers you have access to.
 - Respect the `.gitignore` file; do not read or modify files listed in it.
+- The `docs/design/agents/TECHNOLOGIES.md` file, if present, lists the technologies you may use. You may pull in additional libraries, but may not alter or replace any of the ones listed in that document. The format is `type - name:version`, one line each.
 - Do not modify files in the `.github` or `.prompts` folders.
 
-- Place documentation `docs/` folder, with a `docs/README.md` as the entry point.
-    + Design documentation must be in the `docs/design/` folder.
-    + Files in the `docs/design/agents/` folder are for machine agent use.
-- Respect the `.gitignore` file; do not read or modify files listed in it unless otherwise instructed.
-- You may read, but not modify files in the `.github` folder.
-    + The `.github/templates/` folder contains examples for various files, named with the additional extension `.template` that must be remooved.
-    + All other folders in `.github` should be ignored.
-- Other dot folders (e.g. `.analyze`) are used by various tooling and should be ignored.
+## Coding Standards
 
-## Secrets and security
+### Priorities
 
 1. Security
 2. Robustness
