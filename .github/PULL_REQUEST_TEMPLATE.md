@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pull Request Template
 
 ## Type of change
@@ -27,3 +28,25 @@ Example:
 
 - Run: `make test` or `pnpm test`
 - Environment: OS, runtime versions, any env vars required (do not include secrets)
+=======
+# Pull Request
+
+Please fill out this pull request template completely. Fields marked as required must be filled.
+
+Type of Change (required):
+        - bug_fix
+        - documentation
+        - new_feature
+        - performance improvement
+        - refactor
+        - security
+        - tests
+
+Does the change introduce a breaking change? (required)
+        - yes
+        - no
+
+Related Issues:
+
+Description (required):
+>>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
