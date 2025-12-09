@@ -20,7 +20,6 @@ This document describes the high-level architecture for Hela (Vanopticon), updat
 - Detectors: vulnerability and PoV modules that validate findings non-destructively and cover the wide spectrum of scan types listed in the baseline README (buffer overflow, logic flaws, serialization issues, kernel/C code, cryptography, session management, ACLs, etc.). These detectors are organized into specialized pipelines (memory safety, binary exploitation, protocol misuse, configuration drift) that feed the reporting layer.
 - Plugin Manager: loads and supervises extension modules; plugins run with capability restrictions and follow same transport & TLS rules for any networking.
 - Storage: Postgres (with pgvector) for findings and metadata; artifact storage via object store with signed, time-limited URLs.
-- Scan Set Service: manages configurable scan sets/profiles, publishes depth/detectability/risk metadata, and exposes the REST/CLI endpoints described in `docs/design/scan-sets.md`.
 - Reporting: report generation, exports, and integrations.
 - Observability: Prometheus metrics, OpenTelemetry traces (exported to configured backends over TLS 1.3).
 
@@ -86,21 +85,12 @@ sequenceDiagram
     Reporter->>User: Return report
 ```
 
-  When a CLI invocation specifies a custom `scan_set` (see `docs/design/scan-sets.md`), the CLI first retrieves the set metadata, displays the depth/detectability/risk ratings, and then includes `scan_set_name` in the job creation payload so the scheduler enforces the configured pipelines, limits, and randomization hints.
-
     ## Use Cases
 
     - **Default scan for IP or range**: Client posts targets; scheduler applies default policy (discovery, enumeration, standardized detection pipelines). Workers obey HTTP/2+TLS1.3, randomization, and non-destructive constraints. Reporting aggregates CVE/CWE findings, signs artifacts, and serves the summary via OAuth-protected exports.
     - **Complete scan for a single IP**: A single IP with the “complete” policy flag triggers every detection pipeline (memory, protocol, config, session, network, privilege). Workers run deep probes while randomization ensures unpredictable timing. Outputs include detailed readout with proofs, CVE links, and prioritized mitigations.
     - **Deep disruptive scan with permission**: With explicit permission scope, scheduler enables disruptive modules (privilege escalation, kernel checks). Workers still communicate over HTTP/2+TLS1.3, but may stress targets; evidence persists in Postgres/object store and report downloads remain OAuth protected.
     - **Fast CVE-focused scan for IP or range**: Scheduler limits work to high-severity/common CVE detectors, favors heuristics, and compresses timing windows while randomness maintains variability. Report surfaces the most critical CVEs with confidence scores for rapid response.
-
-    ## Scan Sets & Policy Profiles
-
-    - Scan sets are named profiles that map to (or extend) the `default`, `complete`, `deep`, and `fast` policies but expose the depth, detectability, target risk, and operator risk metadata described in `docs/design/scan-sets.md`.
-    - Each set binds the scheduler to a subset of detection pipelines, rate limits, randomization presets, and evidence retention windows, making it safe to run either aggressive or conservative scans depending on organizational risk posture.
-    - The scheduler, CLI, and reporting layers log the selected set name and its metadata so audits can show which detectors were enabled and why the depth/risk ratings were chosen.
-    - Custom sets also enforce OAuth scopes (`requires_scope`) so only operators with the appropriate privileges can launch high-impact scans.
 
 ## Concurrency, Resilience & Operational Constraints
 
