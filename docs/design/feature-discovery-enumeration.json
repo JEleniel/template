@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Discovery and enumeration modules that identify open services (TCP/UDP/ICMP) and enumerate protocols while respecting randomization and jitter policies.",
+	"steps": [
+		"Implement discovery probes for TCP/UDP/ICMP using randomized target ordering and scheduling parameters",
+		"Add banner analysis and fingerprinting capabilities for HTTP, SSH, SMB, RDP, LDAP, and custom protocols",
+		"Feed discovered services to the enumeration queue with policy-driven concurrency limits",
+		"Integrate rate-limit, jitter, and random source-port behavior to prevent fingerprinting",
+		"Test discovery coverage with lab targets and mock timing variability"
+	],
+	"acceptance_criteria": [
+		"Services across HTTP/SSH/SMB/RDP/LDAP are discovered with captured banners",
+		"Discovery obeys randomization/jitter parameters and never emits deterministic probe sequences",
+		"Enumerators receive consistent discovery inputs and schedule follow-on tests"
+	],
+	"passes": false
+}

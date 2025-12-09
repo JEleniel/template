@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Scheduler and worker orchestration that shards scan scopes, checkpoints progress, and routes tasks over HTTP/2 TLS1.3 connections.",
+	"steps": [
+		"Define job schema capturing targets, policy, dependencies, and checkpoint cursor",
+		"Build scheduler service that shards the scope, limits concurrency, and persists checkpoints to Postgres",
+		"Implement worker pool clients that consume tasks over HTTP/2 TLS1.3, apply rate-limit/jitter, and report results",
+		"Add resume logic so interrupted scans restart from checkpoints and fresh secrets invalidate prior sessions",
+		"Write load/integration tests verifying massive scope distribution and checkpoint recovery"
+	],
+	"acceptance_criteria": [
+		"Scheduler can allocate thousands of targets with checkpointed progress",
+		"Workers obey rate limits/jitter and authenticate server-provided tasks",
+		"Restarting the scheduler resets ephemeral secrets while preserving checkpoints"
+	],
+	"passes": false
+}

@@ -1,0 +1,20 @@
+{
+	"category": "functional",
+	"description": "Command-line interface for Hela that allows operators to submit scans, select policies, configure scan sets, and download OAuth-protected reports over HTTP/2 + TLS1.3 while exposing depth/detectability/risk metadata.",
+	"steps": [
+		"Define CLI commands (`hela scan`, `hela report`, `hela status`, `hela cancel`) that translate to the REST API over HTTP/2",
+		"Expose policy selection flags (`--policy=default|complete|deep|fast`) plus configurable scan set selection (`--set=`) referencing feature-scan-sets",
+		"Surface depth, detectability, target risk, and operator risk ratings in CLI prompts so users understand the impact of their selections",
+		"Implement OAuth2 Client Credentials token acquisition via config files",
+		"Wire CLI commands to call feature-rest-api endpoints and stream results",
+		"Document CLI usage in README/docs and validate via integration tests"
+	],
+	"acceptance_criteria": [
+		"CLI only communicates over HTTP/2 w/TLS1.3 using OS-trusted certs",
+		"Policies and scan sets are selectable via command flags and documented",
+		"CLI surfaces depth/detectability/target risk/operator risk metadata for each invocation and enforces configured risk tolerances",
+		"CLI handles OAuth tokens from approved config paths and rejects localhost bindings",
+		"Report downloads are saved via signed URLs and require valid tokens"
+	],
+	"passes": false
+}

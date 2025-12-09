@@ -1,152 +1,270 @@
-# Application Name
+# Vanopticon - Hela
 
-![Accessibility](https://img.shields.io/badge/Accessibility-%230170EA.svg?style=for-the-badge&logo=Accessibility&logoColor=white)
-![License](https://img.shields.io/github/license/JEleniel/template?style=for-the-badge)
-![Version](https://img.shields.io/github/v/release/JEleniel/template?style=for-the-badge)
-![Issues](https://img.shields.io/github/issues/JEleniel/template?style=for-the-badge)
-![Pull Requests](https://img.shields.io/github/issues-pr/JEleniel/template?style=for-the-badge)
+Hela, goddess of the underworld, knows the sins of all; the Hela tool is an active vulnerability scanner and part of the Vanopticon suite.
 
-⭐ Star us on GitHub — it motivates us a lot!
-
-## Overview
-
-_A one to two paragraph describing the project, what it does, and where we plan to take it._
-
-> **Note:** This is a template repository. Replace `{username}` and `{repo}` in links and badges with your GitHub username and repository name. Fill in the overview, features, and other sections with details specific to your project.
+> **NOTE**: Use of Hela on systems you do not own or have permission to access may be illegal in your jurisdiction- Always ensure you have explicit permission before conducting any security assessments.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- 100% pure Rust with minimal unsafe code (some unsafe code is required for low level operations)
+- Asynchronous scanning using Tokio for high performance
+- Modular architecture for easy extension and customization
+- Support for a wide range of vulnerability checks
+- Detailed reporting and logging
+- Integration with other Vanopticon tools
+
+## Core Discovery & Enumeration
+
+- **Adaptive Host and Service Discovery**
+   Dynamic fingerprinting across IPv4/IPv6, leveraging parallel TCP/UDP probing, SYN/ACK heuristics, banner analysis, and protocol-specific negotiation- Handles ephemeral ports, port-knocking, and rate-limited services.
+
+- **Protocol-Aware Enumeration Modules**
+   Rich dissectors for HTTP(S), SSH, RDP, SMB, LDAP, SNMPv3, MQTT, AMQP, industrial protocols, OT/ICS stacks, and custom enterprise protocols- Precision negotiation to avoid false positives.
+
+- **Authenticated Scanning**
+   Support for credentialed Windows (WinRM, WMI, SMB RPC), Linux (SSH PAM/keys), and hybrid cloud IAM roles- Correct privilege boundary handling, token renewal, and session confinement.
+
+## Vulnerability Detection
+
+- **Exploit-Independent Detection**
+   Semantic version diffing, function/patch presence tests, and behavioral validation without exploitation- Algorithmic mapping to CVE, KEV, CISA directives, vendor advisories.
+
+- **Safe Proof-of-Vulnerability (PoV) Checks**
+   Non-destructive exploit simulation using input perturbation, stub exploitation, environment sandboxing, and side-effect detection- Prevents service disruption.
+
+- **Application-Layer Weakness Testing**
+   Authenticated/unauthenticated web testing: injection, path traversal, misconfigurations, weak crypto, broken access control, deserialization issues, SSRF, RCE indicators, etc- Support for OpenAPI/GraphQL introspection.
+
+- **Configuration & Hardening Validation**
+   CIS, DISA STIG, NIST benchmarks, AWS Well-Architected, Azure Security Benchmark, Kubernetes CIS- Delta analysis against baselines and drift detection.
+
+## Coverage Expansion
+
+- **Cloud-Native Resource Scanning**
+   Real-time enumeration of cloud assets, ephemeral nodes, serverless, containers, images, registries, IaC templates, and agentless VM snapshots.
+
+- **Container & Image Security**
+   Layer-diff scanning, package manifest reconciliation, syscall profile analysis, vulnerable capabilities, exposed secrets, insecure Dockerfile instructions.
+
+- **OT/ICS-Safe Mode**
+    Passive-first handshake, rate-limited probing for fragile PLCs, SCADA systems, and proprietary field controllers- Avoids unintended device state changes.
+
+## Performance & Safety
+
+- **Distributed Scan Orchestration**
+    Horizontal scaling, sharded workloads, checkpointing, result consistency, adaptive throttling- Cloud/hybrid scheduling with network locality awareness.
+
+- **Network Impact Mitigation**
+    Probe pacing, router/firewall congestion modeling, smart retries, token-bucket rate controls, low-impact modes for production networks.
+
+- **Service Conditioning Detection**
+    Identifies WAF/IPS interference, honeypots, tarpits, throttling, deception systems; adjusts probe strategies accordingly.
+
+## Intelligence Integration
+
+- **Contextual Risk Scoring**
+    Multi-factor evaluation: exploit maturity, weaponization, KEV status, exposure path, business criticality, compensating controls, lateral movement potential.
+
+- **Threat Intelligence Fusion**
+    Ingest STIX/TAXII, MISP, CTI feeds, vendor advisories- Automated correlation between scanner findings and observed threat actor TTPs.
+
+- **Anomaly-Driven Targeting**
+    Feed from netflow, passive DNS, EDR telemetry, and SIEM events to prioritize next scans based on suspicious behavior.
+
+## Accuracy & Analysis
+
+- **False Positive Suppression**
+    Behavioral confirmation loops, cross-module correlation, version fingerprint triangulation, service capability diffs.
+
+- **Temporal Drift Tracking**
+    Change detection across scans with precise deltas: newly opened/closed ports, changed banners, patch regressions, config drift.
+
+- **Dependency & SBOM Correlation**
+    Scan package manifests, libraries, JAR/WAR/NuGet/npm/pip artifacts, binaries- Link to SBOM sources and correlate transitive vulnerabilities.
+
+- **Detailed Remediation Pathing**
+    Vendor-specific patch instructions, configuration corrections, compensating hardening, rollback-safe guidance, validation steps.
+
+## Automation, Extensibility & Integration
+
+- **Plugin Architecture**
+    Hot-reloadable modules in multiple languages (e.g., Lua, Python, Rust)- Contract-driven API for new detectors.
+
+- **Policy-Driven Scan Plans**
+    Declarative policies: scope blocks, priority tiers, scheduling windows, credential rotation, cloud account discovery.
+
+- **CI/CD and DevSecOps Integration**
+    Automated pipeline scanning for IaC, containers, and service endpoints- GitOps-aligned diff-based testing.
+
+- **Comprehensive Reporting APIs**
+    REST, gRPC, and event-driven outputs- Structured evidence payloads (JSON, CBOR)- Integration hooks for SOAR/SIEM.
+
+- **Chain-of-Custody Logging**
+    Cryptographically verifiable logs, time-stamped evidence, traceable scan actions, tamper-evident audit trails.
+
+## Types of Scans and Tests
+
+- Buffer Overflow
+- Buffer Underflow
+- UAF- Use After Free
+- Deserialization Vulnerabilities
+- Unsafe Command Invocation
+- Template Injection
+- Sanbox Escape
+- Incorrect Permission Assignment
+- Kernel or Code Vulnerabilities
+- SUID / SGID Issues
+- Process Injection
+- ACL Misconfigurations
+- Insecure Defaults
+- Logic Flaws
+- Insecure Session Management
+- Insecure Cryptographic Storage
+- Insecure Communications
+- Failure to Restrict URL Access
+- Insufficient Transport Layer Protection
+- Hardcoded Credentials
+- Flawed Cryptography
+- Flawed Token Validation
+- And lots more...
+
+## Technologies
+
+- 100% Pure Rust
+- Asynchronous Programming with Tokio
+
+## Status
+
+- CI: See the repository's Actions tab for the latest build status.
+- Documentation: See the `docs/` and `docs/design/` directories for architecture and design notes.
+
+## Prerequisites
+
+- Rust toolchain (stable). Install via rustup if you don't already have it:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup install stable
+rustup default stable
+```
+
+- A few scanners and integrations may require native libraries (for example OpenSSL). On Debian/Ubuntu these are typically provided by:
+
+```bash
+sudo apt-get update && sudo apt-get install -y pkg-config build-essential libssl-dev
+```
+
+## Quick start
+
+Clone the repository (replace the URL with the project's remote):
+
+```bash
+git clone https://github.com/<OWNER>/<REPO>.git
+cd <repo>
+```
+
+Build in debug mode:
+
+```bash
+cargo build
+```
+
+Build an optimized release:
+
+```bash
+cargo build --release
+```
+
+Run the binary (show help to discover available subcommands and options):
+
+```bash
+cargo run -- --help
+# or run the release build
+cargo run --release -- --help
+```
+
+## Testing
+
+Run the full test suite:
+
+```bash
+cargo test --workspace
+```
+
+## Scan set preview
+
+Before adding a new scan set profile, validate it with the built-in preview command:
+
+```bash
+cargo run -- scan-set preview --file docs/design/scan-sets/example.json
+```
+
+The CLI outputs the pipelines, estimated duration, and depth/detectability/risk metadata that will be applied to the scheduler.
+
+Run a single crate's tests (replace <crate-name>):
+
+```bash
+cargo test -p <crate-name>
+```
+
+## Formatting & linting
+
+This repository includes a `rustfmt.toml`. Please format changes before submitting PRs:
+
+```bash
+cargo fmt --all
+```
+
+Lint with Clippy (recommended as part of CI):
+
+```bash
+cargo clippy --all-targets --all-features -- -D warnings
+```
 
 ## Documentation
 
-Our documentation is organized into the following sections:
-
-- **API Reference**: Technical documentation for integrators
-- **User Guide**: Step-by-step instructions for users
-- **Tutorials**: Hands-on learning materials
-- **Architecture**: System design and components
-
-For full documentation, visit:
-
-- [Full Documentation](docs/README.md)
-- [API Reference](docs/api/README.md)
-- [Architecture Overview](docs/architecture.md)
-
-## Getting Started
-
-Explore the [Getting Started](../../wiki/Getting-Started) guide.
-
-> **Note:** Replace this section with installation and setup instructions for your project.
-
-### Prerequisites
-
-- Requirement 1
-- Requirement 2
-
-### Installation
+Generate and open API docs locally:
 
 ```bash
-# Install command here
+cargo doc --open
 ```
 
-## Configuration
+Design and architecture documents live in `docs/design/` — please consult them for high-level decisions and protocol handling.
 
-The following configuration options are available:
+## Contributing
 
-### Environment Variables
+We welcome contributions. Please read `CONTRIBUTING.md` and follow the repository's contribution workflow. Note these key points:
 
-| Variable     | Description                       | Default |
-| ------------ | --------------------------------- | ------- |
-| `API_KEY`    | Authentication key for API access | N/A     |
-| `DEBUG_MODE` | Enable debug logging              | false   |
-| `PORT`       | Server port number                | 3000    |
+- Create branches for individual features or fixes.
+- Write tests for new behavior and ensure the test suite passes.
+- Run `cargo fmt` and `cargo clippy` before submitting a pull request.
+- Sign your commits if the repository requires DCO compliance (see `DCO.md`).
 
-### Configuration File
+Also review `CODE_OF_CONDUCT.md`.
 
-The `config.yml` file supports the following options:
+## Security
 
-```yaml
-api:
-    timeout: 5000
-    retries: 3
-logging:
-    level: info
-    path: ./logs
-```
-
-## Support
-
-[Getting Support](SUPPORT.md)
-
-### Supported Platforms
-
-| Platform | Version 1.0.0 | Version 1.1.0 | Notes               |
-| -------- | :-----------: | :-----------: | ------------------- |
-| Linux    |       ✔       |       ✔       | Full support        |
-| Windows  |       ✔       |       ✔       | Limited WSL support |
-| MacOS    |       ⚠       |       ✔       | Intel/ARM support   |
-| BSD      |      ❌       |       ⚠       | Testing needed      |
-
-## Feedback and Contributions
-
-Please be sure to read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-[Reporting Security Issues](SECURITY.md)
-
-[Contributing to the Project](CONTRIBUTING.md)
-
-## Building and Testing
-
-### Build Requirements
-
-- Requirement 1
-- Requirement 2
-
-### Build Steps
-
-```bash
-# Build commands here
-```
-
-> **Note:** Add your project's build commands here.
-
-### Running Tests
-
-```bash
-# Test commands here
-```
-
-> **Note:** Add your project's test commands here.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
+If you discover a security vulnerability, follow the disclosure guidelines in `SECURITY.md` rather than opening a public issue.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+This repository contains license text files in the project root. See `LICENSE-Apache.md`, `LICENSE-MIT.md`, and `LICENSE-GPL.md` for details about licensing and any multi-license options.
 
-## Contributors
+## Support
 
-<a href="https://github.com/{username}/{repo}/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo={username}/{repo}" />
-</a>
+See `SUPPORT.md` for information about commercial support and how to get help.
 
-Made with [contrib.rocks](https://contrib.rocks).
+## Directory layout
 
-## Tooling
+- `src/` — primary Rust source code
+- `docs/` — user and design documentation
+- `docker/` — helper scripts and Dockerfiles used for development/testing
 
-The tools we use include:
+## Where to go next
 
-![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
-![Linux Mint](https://img.shields.io/badge/Linux%20Mint-87CF3E?style=for-the-badge&logo=Linux%20Mint&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+- Read `docs/design/` for architecture and feature cards.
+- Open issues or PRs to request features or report problems.
 
-# Acknowledgements
+---
 
-Badges provided by [Shields.io](https://shields.io)
+If you'd like a quick example or a tailored quickstart for your platform (macOS, Windows, or specific Linux distribution), tell me which OS and I'll add platform-specific setup steps.

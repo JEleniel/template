@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Randomization infrastructure to prevent probe fingerprinting via seeded RNG, target shuffling, jitter, and packet variability.",
+	"steps": [
+		"Initialize per-process CSPRNG seeded from the OS and derive per-scan nonces",
+		"Randomize target ordering, worker assignment, and inter-probe delays with configurable bounds",
+		"Vary source ports, payload sequences, and backoff windows within policy limits",
+		"Log randomness seeds for reproducibility while never persisting them across restarts",
+		"Add property-based tests verifying distribution differences between runs"
+	],
+	"acceptance_criteria": [
+		"Randomization seeds differ per restart yet maintain coverage",
+		"Timing distributions shuffle between consecutive runs without duplicating sequences",
+		"Operators can tune randomness parameters via config"
+	],
+	"passes": false
+}

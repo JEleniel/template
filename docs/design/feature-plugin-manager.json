@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Plugin manager that securely loads Rust-based or sandboxed Lua/Python extensions without violating TLS/CA policies.",
+	"steps": [
+		"Define plugin trait contracts (initialize, run, health_check, shutdown)",
+		"Implement sandboxing for Lua/Python adapters with capability/privilige restrictions",
+		"Ensure plugins abide by the same TLS/HTTP2 rules when they initiate outbound probes",
+		"Add a plugin registry, versioning, and lifecycle management hooks",
+		"Add plugin unit/integration tests verifying plugin failures do not crash the core scheduler"
+	],
+	"acceptance_criteria": [
+		"Plugins can be added or removed without restarting the scheduler",
+		"Plugin failures are contained and logged while the main service stays healthy",
+		"Plugins cannot bypass transport/TLS constraints"
+	],
+	"passes": false
+}

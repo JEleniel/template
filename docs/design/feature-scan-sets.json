@@ -1,0 +1,19 @@
+{
+	"category": "functional",
+	"description": "Configurable scan sets (aka scan profiles) that let operators tailor which pipelines, modules, limits, depth ratings, detectability, and risk tolerances run per invocation while still honoring the secure transport/policy controls.",
+	"steps": [
+		"Define a scan set schema (name, description, enabled pipelines, allowed targets, depth score, detectability rating, target risk tuning, operator risk tolerance, rate limits, evidence retention, randomization seeds)",
+		"Expose REST endpoints to list/validate/preview scan sets and accept them via OAuth2-protected API calls",
+		"Allow CLI and REST requests to reference sets by name (`--set` or query parameter) and fall back to default policies, sharing their depth, detectability, and risk metadata",
+		"Ensure scheduler applies each set's constraints (detectors, throttles, cooldowns) and rejects sets that require unauthorized permissions",
+		"Add unit/integration tests and docs showing how to author and secure scan profiles"
+	],
+	"acceptance_criteria": [
+		"Operators can define custom scan sets in config or via authenticated API calls",
+		"Each scan set enforces the configured pipelines/modules and rate limits and propagates to scheduler and worker nodes",
+		"Selecting a set via CLI `--set` or REST query parameter is equivalent to selecting a policy (default/complete/deep/fast) but tunable, and its depth, detectability, target risk, operator risk ratings propagate into scheduler decisions",
+		"Set selection requires HTTPS over HTTP/2 + TLS1.3 with OS-trusted certs and valid OAuth tokens",
+		"Unauthorized modifiers (e.g., deep pipeline in fast set) are rejected with clear errors"
+	],
+	"passes": false
+}

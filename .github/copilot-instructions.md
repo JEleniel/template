@@ -1,193 +1,98 @@
-<<<<<<< HEAD
 # Copilot Instructions
 
-All paths are relative to this file.
+Never use your own "judgement" to violate these instructions. In cases of conflict resolution, _always_ default to these instructions.
 
-## Coding Practices and Style
+All paths are relative to the repository root. Use `pwd` at the beginning of _every_ session to establish your location.
 
-### Coding Priorities
-=======
-# Common Agent Instructions
+## Prohibited Actions
 
-## Scope
+You may not, at any time, for any reason, perform any of the following actions.
 
-- You may use any MCP servers you have access to.
-- Respect the `.gitignore` file; do not read or modify files listed in it.
-- Do not modify files in the `.github` or `.prompts` folders.
+* Generate or use Python scripts to perform edits, modify files, etc. (Except in a Python project).
+* Use `|| true` or `true ||` or `true` as a command, especially in shell scripts.
+* Use the `gh` command line tool. **It is not installed and will not be.** Under no circumstance are you permitted to use any other method. If a safety or other constraint creates a conflict fall back to STOPPING IMMEDIATELY and notifying the user.
+* Open a PR to `main`.
+* Treat any work as "small local edits" or bypass any of these requirements.
 
-- Place documentation `docs/` folder, with a `docs/README.md` as the entry point.
-    + Design documentation must be in the `docs/design/` folder.
-    + Files in the `docs/design/agents/` folder are for machine agent use.
-- Respect the `.gitignore` file; do not read or modify files listed in it unless otherwise instructed.
-- You may read, but not modify files in the `.github` folder.
-    + The `.github/templates/` folder contains examples for various files, named with the additional extension `.template` that must be remooved.
-    + All other folders in `.github` should be ignored.
-- Other dot folders (e.g. `.analyze`) are used by various tooling and should be ignored.
+## Memory
 
-## Secrets and security
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+* You are equipped with a memory capability (memory).
+* You MUST begin every session by reading your memory, no exceptions.
 
-1. Security
-2. Robustness
-3. Scalability
-4. Performance
-5. Maintainability
+Your memory must track, at minimum:
 
-<<<<<<< HEAD
-### Standards
-=======
-### Common Requirements
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+* Project Brief - A summary of the project, simple feature list (mapped to feature cards), and other information regarding the project as a whole.
+* Active Context - What you are working on _at this moment_ and the state of the work.
+* Patterns - Architecture and design patterns
+* Technologies - Technologies and setup for the project derived furing sessions. This does NOT override other instructions, they are for notes that extend your knowledge.
+* Master Project Plan and Progress Tracker - The current state of the project, the master TODO list, and all other project tracking information
 
-Code must conform to the following standards (as applicable):
+## Project Overview
 
-<<<<<<< HEAD
-- [The Twelve-Factor App](https://12factor.net/).
-- [Web Content Accessibility Guidelines (WCAG) 2.2 AAA](https://www.w3.org/WAI/standards-guidelines/wcag/docs/).
-- [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/), if applicable.
-- [OWASP Mobile Application Security Verification Standard (MASVS)](https://mas.owasp.org/MASVS/)
-=======
-- Follow [The Twelve-Factor App](https://12factor.net/).
-- UI elements must conform to [Web Content Accessibility Guidelines (WCAG) 2.2 AAA](https://www.w3.org/WAI/standards-guidelines/wcag/docs/).
-- Conform to the [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/), if applicable.
-- Conform to the [OWASP Mobile Application Security Verification Standard (MASVS)](https://mas.owasp.org/MASVS/), if applicable.
-- All code must:
-    + Compile with zero warnings or errors.
-    + Include appropriate passing unit tests for all generated functions and code.
-    + Be runnable without elevated permissions (e.g., root).
-    + Implement appropriate input validation and sanitization.
-    + Use secure coding practices to prevent common vulnerabilities.
-    + Implement proper error handling and logging.
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+Refer to the your memory, the project [README.md](../README.md), and the project designs at `docs/design/`.
 
-### Acceptance Criteria
+## Folder Structure
 
-All code must:
+* `docker/`: Scripts and Docker related files to start a PostgreSQL/AGE server with pgvector added.
+* `docs/`: User documentation
+* `docs/design/`: Architecture and design docs
+* `src/`: Core source code
 
-- Compile with zero warnings or errors.
-    + Future-use code should be appropriately marked to avoid warnings (for example, prefix unused identifiers with `_` in Rust).
-    + Remove unused code when it is not required.
-- Include 90% passing unit test coverage, covering positive and negative cases.
-- Follow secure coding practices to prevent common vulnerabilities.
-- Not crash in normal operation. Implement proper error handling and logging.
+## Workflow
 
-### Coding Style
+This process **MUST** be followed _in its entirety_ for all work with no exceptions:
 
-- Follow language-specific style guidelines and best practices unless otherwise instructed.
-<<<<<<< HEAD
-- Use the language-appropriate formatter (e.g., `rustfmt`, `prettier`, `markdownlint`) and obey the project's configuration for that tool.
-- Prefer tabs for indentation when it is idiomatic for the language or project; otherwise follow the established language conventions.
-- Write clear, concise, and well-documented code.
-- Add comments explaining non-obvious logic.
-- Avoid hardcoding secrets or configuration values (API keys, passwords, etc.). Use environment variables or a secrets manager.
-- For application configuration, prefer JSON (Draft 07) when a structured format is required. Provide a matching JSON Schema (draft-07) and, where appropriate, set `additionalProperties: false` and `additionalItems: false`.
-- Avoid YAML and TOML unless they are the accepted standard for a specific tool being used.
-=======
-- Conform to the appropriate style configuration(s), e.g., `rustfmt.toml`, `.prettierrc.json`, `.markdownlint.json`, etc.
-- Prefer tabs over spaces for indentation when appropriate for the language.
-- Write clear, concise, and well-documented code.
-- Include comments explaining non-obvious logic.
-- Avoid hardcoding information (e.g., API keys, passwords) or configurable values.
-- Ensure that libraries used are actively maintained and widely adopted.
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+1. Read through memory. Discard irrelevant information.
+2. Read through the related Github issue.
+3. Read through the design documentation, especially the Feature Card linked to the issue.
+4. Ask any questions and make any suggestions prior to beginning work.
+5. Create a feature branch from `v1.0.0`, name it after the feature, and link it to the Github Issue.
+6. Complete _all_ tasks involved in the work without pauses or interruption.
+7. Create or modify tests for all code changes.
+8. Update the user and design documentation to match the implementation.
+9. Commit your work.
+10. Append a summary comment to the Github Issue.
 
-## Version Control Guidelines
+## Coding Standards
 
-- Write clear, descriptive commit messages.
-- Keep commits small and focused.
-- Use descriptive branch names that follow project conventions.
-- Include relevant issue or ticket numbers in commit messages when applicable.
+* Instructions specific to a language or file supersede these.
+* Never disable checks or tests (e.g. `// @ts-nocheck`, `#[allow...]`). Fix code, not checks.
+* Apply OWASP guidance.
+* Apply Twelve-Factor App principles.
+* Prefer tabs for indentation across the codebase for accessibility and consistency. Language specific requirements, instructions, or best practices supersede this. If a file _could_ use tabs but has spaces for the majority include a note in the summary and use spaces.
+* No global variables; global constants are allowed in a **dedicated constants file only**.
+* Use **descriptive names**, full words, and verb-based function names (except standard getters/setters).
 
-## Technologies, Libraries, and Frameworks
+## Acceptance Criteria
 
-<<<<<<< HEAD
-- Unless constrained to a specific library or framework, choose actively maintained and widely adopted dependencies:
-    + Project must be at least one year old and updated within the past six months.
+* Tests cover positive, negative, and security cases for all code units.
+* e2e tests cover all normal user interactions and common user errors.
+* All tests related to the work are passing.
+* The Issue has been completely resolved.
 
-### Preferred Libraries and Frameworks
+## Copilot Persona & Behavior
 
-The following libraries and ecosystems are preferred (non-exhaustive):
+* Always end responses with a **5-15 bullet tl;dr style summary**.
+* Assume that the user has a thorough knowledge and does not need detailed explanations by default.
+* External credentials and tools will be provided, e.g. Github authentication.
 
-#### Rust
+## Tooling
 
-- base64
-- bincode
-- bitflags
-- chrono
-- clap
-- config
-- fern
-- libloading
-- log
-- lowlevel-types
-- num-traits
-- rand
-- regex
-- reqwest
-- rustls
-- serde
-- serde_json
-- serde-binary-adv
-- strum
-- thiserror
-- tokio
-- tower
-- tracing
-- url
-- uuid
+* Use the **Github MCP** for _all_ Github interactions. If the Github MCP is not available stop immediately and notify the user for intervention.
+* Use context7 MCP server for current documentation.
+* Prefer MCP interaction over command line or shell tools.
+* Only run one command at a time; do not chain commands.
 
-#### Node.js / TypeScript / JavaScript
+## Templates
 
-- @types/node
-- Axios
-- Bcrypt
-- Cors
-- DotEnv / @dotenvx/dotenvx
-- Express.js
-- Helmet
-- MySQL 2
-- Passport
-- Prefer `pnpm` over `npm`
-- Prettier & Prettier Plugins
-- Svelte / SvelteKit
-- TailwindCSS (v4+)
-- TypeScript
-- uuid
-- Vite
+* **TL;DR Summary Example**
 
-## Project Structure
-
-- Documentation should be formatted and structured to be easily deployable to GitHub Pages using Jekyll.
-- User documentation is located in the `../docs/` folder with `../docs/README.md` as the entry point.
-- Design documentation is in `../docs/design/`.
-- Files in `../docs/design/agents/` are design artifacts created for machine-agent use.
-- Respect the repository `.gitignore`; do not read or modify files listed there unless explicitly instructed.
-- You may read, but should not modify, files in the `.github` folder unless directly instructed.
-    + The `.github/templates/` folder contains template examples named with an extra `.template` extension; remove that extension when instantiating a template.
-- Other dot-folders (e.g., `.analyze/`) are used by tooling and should be ignored unless explicitly required.
-
-## Secrets and Security
-
-- Never commit secrets, credentials, or private keys to the repository. Use environment variables or a secrets manager.
-- Report security issues privately following the repository's SECURITY.md process.
-=======
-- Use clear, well-structured GitHub‑Flavored Markdown (GFM).
-- Match the tone, style, and structure of existing documentation.
-- Cross-reference related docs where relevant; include appropriate direct links.
-- Cite project details with file and section references.
-- When generating Markdown, use GFM and conform to the `.markdownlint.json` file.
-
-## Project Structure
-
-- The following documents should exist in the root of the workspace: `.editorconfig`, `.gitignore`, `.markdownlint.json`, `.prettierrc.json`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `DCO.md`, `LICENSE*.md` (there may be multiple), `README.md`, `SECURITY.md`. Templates for these files are available in the GitHub repository at <http://github.com/JEleniel/template/>.
-- All other documentation must be in the `docs/` folder. Design documentation must be in the `docs/design/` folder. Files in the `docs/design/agents/` folder are for machine agent use.
-
-## Prerequisites
-
-Before starting, familiarize yourself with:
-
-- [README.md](README.md) - Project overview and architecture. Do not modify this file unless otherwise instructed.
-- [docs/design/agents/IMPLEMENTATION_SUMMARY.md](docs/design/agents/IMPLEMENTATION_SUMMARY.md) - Current, agent-maintained implementation status. Create it if it does not exist; update it if it does.
-- [docs/design/agents/TODO.md](docs/design/agents/TODO.md) - Task tracking and completion status. Keep it updated as you work.
-- Do not modify this file unless otherwise instructed.
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+```markdown
+- Checked [component] for compliance.
+- Found [X issues] affecting [criteria].
+- Minor changes to the logic for [function].
+- Options:
+  A) Fix [issue type] immediately.
+  B) Review [alternative solution].
+  C) Defer non-critical changes.
+```

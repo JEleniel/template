@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Observability stack broadcasting Prometheus metrics and OpenTelemetry traces over TLS1.3 for auditability.",
+	"steps": [
+		"Instrument scheduler, workers, and detectors with tracing spans and metrics",
+		"Expose metrics endpoints over HTTPS (HTTP/2 + TLS1.3) or via an authenticated proxy",
+		"Send OpenTelemetry traces to configured collectors using TLS1.3",
+		"Correlate findings with trace IDs for debugging",
+		"Validate observability endpoints reject unauthorized requests"
+	],
+	"acceptance_criteria": [
+		"Prometheus scrapes deliver metrics via OAuth-protected endpoints",
+		"Traces include scan IDs for correlation",
+		"Observability endpoints only accept OS-trusted TLS certificates"
+	],
+	"passes": false
+}

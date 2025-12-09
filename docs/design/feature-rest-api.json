@@ -1,0 +1,28 @@
+{
+	"category": "functional",
+	"description": "Secure REST API surface for scheduling scans, retrieving status, and delivering reports over HTTP/2 + TLS1.3 with OAuth2 Client Credentials while surfacing depth/detectability/risk metadata.",
+	"requirements": {
+		"transport": "REST over HTTP/2 with TLS1.3",
+		"auth": "oauth2-client-credentials",
+		"no_grpc": true,
+		"no_localhost": true,
+		"config_paths": ["/etc/vanguard/hela.json", "$XDG_CONFIG_HOME/hela.json"],
+		"risk_metadata": ["depth", "detectability", "target_risk", "operator_risk"]
+	},
+	"steps": [
+		"Design OpenAPI definition covering POST /v1/scans, GET status, GET report, and cancellation endpoints",
+		"Implement HTTP/2 server accepting only TLS1.3 cipher suites and reject connections with certs not chained to OS trust store",
+		"Validate OAuth tokens per request, enforce scopes (hela.scans.create, hela.scans.read) and map RBAC claims",
+		"Annotate every scan request/response with depth, detectability, target risk, and operator risk ratings so callers can understand impact",
+		"Read config from the approved JSON paths and regenerate server secrets/session keys at startup",
+		"Add integration tests exercising OAuth token issuance, TLS1.3 enforcement, and rejection of localhost-bindings"
+	],
+	"acceptance_criteria": [
+		"Endpoints only respond over HTTP/2 with TLS1.3 and OS-trusted certs",
+		"OAuth Client Credentials tokens gate every request and enforce scopes",
+		"Connections using localhost/127.0.0.1 or non-OS certs are rejected",
+		"Each scan request/response carries depth, detectability, target risk, and operator risk metadata",
+		"API definition is documented and versioned"
+	],
+	"passes": false
+}

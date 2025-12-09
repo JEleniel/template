@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Detection pipelines that cover the scan taxonomy (memory/binary safety, protocol/serialization, configuration, crypto/session, network, privilege) and synthesize findings.",
+	"steps": [
+		"Define scan taxonomy and map detectors to categories (memory, protocol, config, session, network, privilege)",
+		"Implement heuristics, fuzzers, and PoV checks for each category that emit structured findings",
+		"Merge pipeline outputs into a common evidence model with severity/confidence metadata",
+		"Ensure detectors operate safely (non-destructive) and respect target-safe policies",
+		"Validate coverage via integration tests exercising each pipeline against lab services"
+	],
+	"acceptance_criteria": [
+		"Every scan category from the README is exercised by at least one detector",
+		"Findings include severity, confidence, module metadata, and proof artifacts",
+		"Detectors can be turned on/off via policies without code changes"
+	],
+	"passes": false
+}

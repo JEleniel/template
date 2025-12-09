@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Reporting service that aggregates findings, enriches them with CVE/CWE context, and surfaces prioritized remediation steps via signed exports.",
+	"steps": [
+		"Define reporting schema that includes severity, confidence, CVE/CWE IDs, and evidence references",
+		"Generate JSON/CBOR exports and integrate with SOAR/SIEM hooks",
+		"Add report download endpoints secured by OAuth tokens and signed URLs",
+		"Prioritize findings by confidence, criticality, and policy compliance",
+		"Include export generation tests and validate artifact access gating"
+	],
+	"acceptance_criteria": [
+		"Reports list the relevant CVEs/CWEs and recommended mitigations",
+		"Exports can be downloaded only over OAuth-protected endpoints",
+		"Prioritization honors policy directives and highlights drifts"
+	],
+	"passes": false
+}

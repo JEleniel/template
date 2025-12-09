@@ -1,0 +1,17 @@
+{
+	"category": "functional",
+	"description": "Storage adapters for Postgres + pgvector and object stores to persist findings, checkpoints, and artifacts securely.",
+	"steps": [
+		"Design schema for findings, scans, tasks, and checkpoints that supports auditability",
+		"Implement Postgres adapters with connection pooling and migrations",
+		"Integrate pgvector for embedding-assisted triage and similarity searches",
+		"Store large artifacts (captures, PCAPs) in an object store and reference them via signed, time-limited URLs",
+		"Add retention policies and backups to satisfy compliance"
+	],
+	"acceptance_criteria": [
+		"Findings and checkpoints are durable across restarts",
+		"Artifacts remain accessible via signed URLs that still require OAuth tokens",
+		"pgvector indexes can power similar findings retrieval"
+	],
+	"passes": false
+}

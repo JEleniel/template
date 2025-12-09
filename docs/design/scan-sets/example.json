@@ -1,0 +1,14 @@
+{
+	"name": "custom/deep-audit",
+	"description": "Deep audit for sensitive ranges.",
+	"enabled_pipelines": ["discovery", "memory", "privilege"],
+	"allowed_targets": ["203.0.113.0/28"],
+	"depth": "deep",
+	"detectability": "aggressive",
+	"target_risk": "elevated",
+	"operator_risk": "assertive",
+	"rate_limit": { "probes_per_second": 5, "concurrent_targets": 2 },
+	"evidence_retention": "30d",
+	"randomization": { "jitter_ms": 200, "ordering": "per-scan" },
+	"requires_scope": "hela.scans.deep"
+}

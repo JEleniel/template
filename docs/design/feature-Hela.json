@@ -1,0 +1,34 @@
+{
+  "category": "functional",
+  "description": "Core scanner engine and architecture for Hela: adaptive host/service discovery, protocol-aware enumeration, non-destructive PoV detection, plugin architecture, secure transport and auth, storage and reporting.",
+  "requirements": {
+    "transport": "REST over HTTP/2 with TLS1.3",
+    "no_localhost_or_loopback": true,
+    "auth": "oauth2-client-credentials",
+    "ca_policy": "os_trust_store_only",
+    "config_paths": ["/etc/vanguard/hela.json", "$XDG_CONFIG_HOME/hela.json"],
+    "regenerate_secrets_on_startup": true,
+    "invalidate_sessions_on_restart": true,
+    "grpc_permitted": false,
+    "scan_randomization_required": true
+  },
+  "steps": [
+    "Design and implement Scheduler/Orchestrator with sharded worker pool and checkpointing",
+    "Implement Discovery modules (TCP/UDP probing, banner analysis, fingerprinting) with randomized scheduling and jitter",
+    "Implement Enumeration modules for HTTP, SSH, SMB, RDP, LDAP and others",
+    "Implement vulnerability detectors and safe PoV checks",
+    "Design and implement plugin interface (Rust traits) and sandboxed adapters that cannot bypass TLS/CA constraints",
+    "Implement Storage adapters (Postgres + pgvector, object store for evidence) with signed artifact URLs",
+    "Add Observability (Prometheus metrics, OpenTelemetry traces) and structured logging over TLS1.3",
+    "Create unit, integration, and e2e tests; include CI workflows that validate TLS1.3, OAuth flows, and randomness properties"
+  ],
+  "acceptance_criteria": [
+    "All API endpoints enforce HTTP/2 with TLS1.3",
+    "OAuth2 Client Credentials used for all API access",
+    "No service binds to localhost or 127.0.0.1",
+    "Ephemeral secrets are regenerated at startup and sessions are invalidated on restart",
+    "TLS certificates chain to OS-trusted roots only (no self-signed certs)",
+    "Scan execution includes randomized order/timing/ports to reduce fingerprintability"
+  ],
+  "passes": false
+}

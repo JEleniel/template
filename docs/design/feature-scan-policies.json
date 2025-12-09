@@ -1,0 +1,19 @@
+{
+	"category": "functional",
+	"description": "Policy definitions (default, complete, deep, fast) that guide scheduler behavior, risk telemetry, and use case compliance while exposing depth, detectability, target risk, and operator risk ratings.",
+	"steps": [
+		"Define policy metadata (name, depth score, detectability, detection pipelines enabled, rate limits, allowed modules, target risk, operator risk levels)",
+		"Implement policy selector in scheduler/CLI so clients choose behavior that includes the depth, detectability, and risk ratings",
+		"Ensure 'deep' policy requires elevated OAuth scopes and permission checks linked to its higher depth, detectability, and operator risk",
+		"Document policy differences in architecture docs and CLI help text with depth/risk/detectability comparisons",
+		"Add tests validating policy-specific pipeline coverage, randomization settings, and that depth/risk/detectability ratings influence scheduler throttles"
+	],
+	"acceptance_criteria": [
+		"Default policy covers safe discovery/enumeration/detection at moderate depth, low detectability, and low target/operator risk",
+		"Complete policy activates every detection pipeline for single-IP runs and reports high depth with medium detectability and medium target/operator risk",
+		"Deep policy only runs when additional permissions are presented because it has the highest depth, detectability, and target-risk ratings",
+		"Fast policy limits work to high-severity CVE detectors, keeping depth/detectability low and operator risk minimal",
+		"Each policy surfaces its depth, detectability, target risk, and operator risk rating through the REST API/CLI metadata"
+	],
+	"passes": false
+}

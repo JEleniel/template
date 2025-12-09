@@ -1,0 +1,18 @@
+{
+	"category": "functional",
+	"description": "Report export workflows that generate signed readouts for each use case, keep evidence accessible, and stream downloads via the REST API and CLI.",
+	"steps": [
+		"Define report formats (JSON/CBOR) for default, complete, deep, and fast scans",
+		"Generate signed, time-limited artifact URLs stored in object storage",
+		"Expose API endpoints to query/download reports while requiring OAuth tokens",
+		"Integrate CLI report command to pull exports and store them locally",
+		"Add tests verifying report content matches the scan policy and includes CVE/CWE context"
+	],
+	"acceptance_criteria": [
+		"Every scan run produces a report with severity/confidence and CVE/CWE references",
+		"Downloads require OAuth tokens and happen over HTTP/2+TLS1.3",
+		"Signed URLs expire within policy-defined windows",
+		"CLI can save reports locally via the API"
+	],
+	"passes": false
+}
