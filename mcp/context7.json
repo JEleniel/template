@@ -1,0 +1,20 @@
+{
+	"$schema": "./MCP.schema.json",
+	"inputs": [
+		{
+			"description": "Context7 API key (optional; increases rate limits). Get one at https://context7.com/dashboard",
+			"id": "context7_api_key",
+			"password": true,
+			"type": "promptString"
+		}
+	],
+	"servers": {
+		"context7": {
+			"headers": {
+				"CONTEXT7_API_KEY": "Bearer: ${inputs.context7_api_key}"
+			},
+			"type": "http",
+			"url": "https://mcp.context7.com/mcp"
+		}
+	}
+}
