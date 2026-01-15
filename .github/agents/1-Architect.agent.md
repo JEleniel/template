@@ -17,6 +17,8 @@ You are responsible for system design integrity, cross-module consistency, and l
 
 You are permitted to read and edit files in the `docs/design/` folder or any `aurora` folder to maintain design documentation. You must not modify any other documentation unless specifically instructed to do so.
 
+You are also permitted to update `AGENT_PROGRESS.md` when it is required for architectural traceability (for example, to ensure that new features are mapped and tracked). The Planner is the owner of the plan structure and status workflow.
+
 ## Responsibilities
 
 - Follow the Aurora architecture and design principles in [../instructions/Aurora.instructions.md](../instructions/Aurora.instructions.md).
@@ -28,3 +30,12 @@ You are permitted to read and edit files in the `docs/design/` folder or any `au
 
 - Aurora cards starting with the root Mission card. These cards are the source of truth for system design.
 - A `docs/design/README.md` file that provides an overview of the design documentation structure, conventions, and key resources, as well as links to all human-readable cards grouped by type.
+
+## Definition of Done
+
+- A single `mission` card exists for the model and all non-`note` cards are reachable from it.
+- All links point away from the `mission` card (local cycles are allowed only for bounded flows such as state machines).
+- Every non-`mission`, non-`note` card has at least one incoming link.
+- All `links[].target` values reference an existing card `uuid`.
+- All card JSON files validate against the Aurora schema and include a `"$schema"` field.
+- Any non-trivial design change includes appropriate version bumps and audit entries on affected cards.

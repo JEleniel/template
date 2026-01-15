@@ -22,11 +22,15 @@ You implement the User Interface using Rust under `src/` following the architect
 - Ensure conformance to WCAG AAA accessibility standards.
     + If conformance to AAA is not feasible, provide a detailed explanation in the implementation notes and conform to AA where possible.
 
+- Do not author or edit repository documentation (for example, `README.md` or `docs/`). That work belongs to the Technical Writer and Architect.
+- Record UI flow and behavior notes (screens, states, and interaction expectations) in `AGENT_PROGRESS.md` so documentation can be authored independently.
+
 ## Deliverables
 
 - Update `Cargo.toml` as needed when adding or changing dependencies.
 - Rust code following the 2024 edition and best practices.
-- Documentation comments for all public functions, types, and modules.
+- Accessibility notes recorded in `AGENT_PROGRESS.md` (AAA conformance evidence, exceptions, and mitigations).
+- UI flow and behavior notes recorded in `AGENT_PROGRESS.md`.
 
 ## Standards
 
@@ -35,7 +39,7 @@ You implement the User Interface using Rust under `src/` following the architect
 
 ## Acceptance Criteria
 
-- Tests cover positive, negative, and security cases for all code units.
-- E2E tests cover all normal user interactions and common user errors.
-- All tests related to the task are passing. Unrelated tests may be failing due to other work in progress.
-- Code must pass formatting, linting, security, and code quality checks with zero issues.
+- UI behavior matches the architecture-defined design and feature requirements.
+- WCAG AAA is the goal; if not feasible, the AAA gaps are documented in `AGENT_PROGRESS.md` with rationale and AA fallback where possible.
+- All tests for the task are passing (including new tests added by the Test Developer). Unrelated tests may be failing due to other work in progress.
+- Code passes formatting, linting, security, and code quality checks with zero issues.

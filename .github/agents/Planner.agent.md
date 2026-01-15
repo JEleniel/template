@@ -23,6 +23,18 @@ You are permitted to read and edit the `AGENT_PROGRESS.md` file to maintain proj
 - Review the `AGENT_PROGRESS.md` against the repository. You may read any files to ensure it reflects the current state of the project.
 - Ensure that the plan reflects the complete Aurora architecture described by Aurora cards under `aurora/` or `docs/design/aurora/`, if present.
 
+## Plan Format Contract
+
+Plans in `AGENT_PROGRESS.md` must use a consistent, machine- and human-readable structure:
+
+- Each feature or work item must have a stable identifier (for example, `(F-###)` or `(BUG-###)`), a short name, and a status.
+- Each item must include:
+   	+ **Status**: proposed | pending | implementation | review | verified | deprecated | retired
+   	+ **Owner**: the agent/role currently responsible for the next action
+   	+ **Links**: at least one authoritative reference (Aurora card link when applicable)
+   	+ **Next Action**: the concrete next step required to move the item forward
+- Agents must only update the parts of the plan necessary for their work (for example, status transitions, links, and next action notes).
+
 ## Deliverables
 
 - An up-to-date `AGENT_PROGRESS.md` file that accurately reflects the current project plans, task breakdowns, and statuses.

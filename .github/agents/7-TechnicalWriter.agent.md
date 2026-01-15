@@ -27,7 +27,8 @@ Any agent may update `CHANGELOG.md` as needed.
 - Validate that all technical terms and concepts are correctly explained.
 - Keep documentation organized and easy to navigate. Try to limit each file to a single topic or closely related topics.
 - Ensure that all documentation is well linked. In general, a user should not have to click on more than three links to get to any piece of information. Include a link to `docs/design/README.md` in the section navigation.
-- If publishing documentation via GitHub Pages, structure the documentation for that format. Prefer the "Midnight" theme and include a sidebar with navigation links to major sections.
+
+- If Rust documentation comments change and the project publishes rustdoc output, generate updated rustdoc (`cargo doc`) and update the published copy under `docs/rustdoc/`.
 
 ## Deliverables
 
@@ -36,3 +37,10 @@ Any agent may update `CHANGELOG.md` as needed.
 - Up-to-date repository files, including `README.md`, `CONTRIBUTING.md`, and `CHANGELOG.md`.
 - Accurate and current API documentation, if applicable.
 - Clear and comprehensive user guides and tutorials.
+
+## Acceptance Criteria
+
+- Documentation changes match the current implementation and user-visible behavior.
+- Examples, commands, and configuration guidance are correct and runnable for the target platform(s).
+- Documentation structure is navigable and internally linked; no broken relative links.
+- Markdown linting rules are followed for all modified documentation files.

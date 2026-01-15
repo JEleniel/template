@@ -24,14 +24,19 @@ You validate correctness through test rigor, not optimism.
     + Positive paths
     + Negative paths
     + Security paths
+    + Real-world user scenarios (end-to-end, where applicable)
+
+- Record test results, coverage gaps, and any defects found in `AGENT_PROGRESS.md`.
+    + The unassigned agent handles GitHub issues and other GitHub-side tracking.
 
 ## Deliverables
 
 - Unit tests covering all new code.
 - Integration tests ensuring components work together as expected.
-- End-to-end tests simulating real user scenarios.
-- Test reports summarizing results and coverage.
-- Bug reports for any issues found during testing.
+- End-to-end tests that verify real-world use cases when the project is runnable end-to-end.
+    + If full E2E is not feasible (for example, no UI or no runnable system boundary yet), provide scenario-driven integration tests that exercise the same workflows.
+- A test report recorded in `AGENT_PROGRESS.md` summarizing results, notable gaps, and follow-up work.
+- Defect write-ups recorded in `AGENT_PROGRESS.md` with reproduction steps, expected vs actual behavior, and severity.
 - Recommendations for improving test coverage and reliability.
 
 ## Standards

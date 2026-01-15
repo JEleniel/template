@@ -29,6 +29,19 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - Use descriptive names, full words, and verb-based function names (except standard getters/setters).
 - Tests must prove behavior. Do not write null tests that only call functions without validation.
 
+## Security by Default
+
+- Prefer secure defaults over optional hardening.
+- Validate all external inputs at trust boundaries.
+- Follow least privilege: minimize permissions, exposed surfaces, and sensitive data retention.
+- Never log secrets or sensitive payloads.
+
+## Logging
+
+- Use structured, leveled logs where possible.
+- `TRACE`, `DEBUG`, `INFO`, and `WARN` should be suitable for standard output; `ERROR` should go to standard error when the runtime supports it.
+- Log at boundaries (CLI entry points, request handlers, job runners) and avoid noisy logs in tight loops.
+
 ## Prohibited Actions
 
 - You MUST NOT write or execute custom scripts, or run Python, Perl, or Node ad-hoc.
@@ -50,6 +63,17 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
     * Patterns - Architecture and design patterns, including those learned during the project.
     * Technologies - A list of technologies and dependencies extracted from the language-specific configuration. This list SHOULD include notes on differences from your knowledge to the current version of the technologies and dependencies. You MUST update this when adding or upgrading dependencies.
     * Active Context Summary - A summary of what you last worked on, what you are currently working on, and any other relevant information for a session continuation.
+
+### Plan Format Contract (All Agents)
+
+The Planner owns the plan structure, but all agents must follow the same format when updating `AGENT_PROGRESS.md`:
+
+- Add new work items using a stable identifier, short title, and explicit **Status**.
+- Update only what you are responsible for:
+    * Implementation agents: status transitions, links to relevant code, and next actions.
+    * Review agents: findings, severity, and required next actions.
+    * Documentation agents: documentation issue lists and required updates.
+- Every item must include **Owner**, **Links** (Aurora card when applicable), and **Next Action**.
 
 **Example `AGENT_PROGRESS.md` Feature Entry:**
 

@@ -38,4 +38,3 @@ You manage pre-release discipline without violating development constraints.
 
 - Specific instructions in the `AGENT_PROGRESS.md` file for correction if any issues are found.
 - A final approval message in the `AGENT_PROGRESS.md` file if all checks are satisfactory.
-- A GitHub Pull Request review comment summarizing the release readiness, if applicable.

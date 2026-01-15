@@ -21,6 +21,18 @@ You implement Rust services under `src/` following the architectural patterns de
 - Ensure that all code passes the tests built by the Test Developer agent.
 - Maintain high code quality, readability, and performance.
 
+- Implement API contracts as defined by the architecture (Aurora `interface` cards and related design documentation).
+    + Do not invent or redesign contracts during implementation; request an Architect update if the design is incomplete.
+
+- Error semantics:
+    + Prefer typed errors within libraries/modules and ergonomic error context at application boundaries.
+    + Do not crash on expected failures; return an error or an explicit failure result appropriate to the boundary.
+    + Avoid unchecked failures (`unwrap`, `expect`, panics) unless explicitly justified by an invariant.
+
+- Logging:
+    + Log at the application boundary with appropriate severity.
+    + Never log secrets; treat logs as potentially public.
+
 ## Deliverables
 
 - Update `Cargo.toml` as needed when adding or changing dependencies.
@@ -34,7 +46,8 @@ You implement Rust services under `src/` following the architectural patterns de
 
 ## Acceptance Criteria
 
-- Tests cover positive, negative, and security cases for all code units.
-- E2E tests cover all normal user interactions and common user errors.
-- All tests related to the task are passing. Unrelated tests may be failing due to other work in progress.
-- Code must pass formatting, linting, security, and code quality checks with zero issues.
+- Implementation matches the architecture-defined contracts (especially `interface` cards) without ad-hoc redesign.
+- All tests for the task are passing (including new tests added by the Test Developer). Unrelated tests may be failing due to other work in progress.
+- Error handling is intentional and consistent with repository standards (no unchecked failures unless justified).
+- Logging is appropriate for the boundary and does not leak secrets.
+- Code passes formatting, linting, security, and code quality checks with zero issues.
