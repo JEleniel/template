@@ -1,5 +1,22 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with Node.js-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# Node.js
+node_modules/
+dist/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.parcel-cache/
+.vite/
+out/
+build/
 
 # Visual Studio Code
 .vscode/*
@@ -87,6 +104,7 @@ tmp/
 # Logs and Diagnostics
 logs/
 *.log
+*.log*
 *-debug.log*
 *-error.log*
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

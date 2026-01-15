@@ -1,0 +1,9 @@
+{
+	"$schema": "./MCP.schema.json",
+	"servers": {
+		"playwright": {
+			"command": "npx",
+			"args": ["@playwright/mcp@latest"]
+		}
+	}
+}

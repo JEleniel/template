@@ -1,0 +1,203 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://json.schemastore.org/mcp-config-0.1.0.json",
+	"title": "MCP Servers Configuration",
+	"description": "Configuration schema for MCP (Model Context Protocol) servers",
+	"type": "object",
+	"required": ["servers"],
+	"additionalProperties": false,
+	"properties": {
+		"$schema": {
+			"type": "string",
+			"description": "The schema path"
+		},
+		"inputs": {
+			"type": "array",
+			"description": "Array of input configurations",
+			"items": {
+				"$ref": "#/definitions/input"
+			}
+		},
+		"servers": {
+			"type": "object",
+			"description": "Map of server configurations",
+			"minProperties": 1,
+			"patternProperties": {
+				"^[a-zA-Z][a-zA-Z0-9_-]*$": {
+					"$ref": "#/definitions/server"
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"definitions": {
+		"promptStringInput": {
+			"type": "object",
+			"description": "Configuration for string input prompts",
+			"required": ["type", "id", "password"],
+			"additionalProperties": true,
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "promptString"
+				},
+				"id": {
+					"type": "string",
+					"pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+					"description": "Unique identifier for the input"
+				},
+				"description": {
+					"type": "string"
+				},
+				"default": {
+					"type": "string"
+				},
+				"password": {
+					"type": "boolean",
+					"description": "If true, the input should be masked",
+					"default": true
+				}
+			}
+		},
+		"pickStringInput": {
+			"type": "object",
+			"description": "Configuration for selection from predefined options",
+			"required": ["type", "id", "options"],
+			"additionalProperties": true,
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "pickString"
+				},
+				"id": {
+					"type": "string",
+					"pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+					"description": "Unique identifier for the input"
+				},
+				"description": {
+					"type": "string"
+				},
+				"options": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				},
+				"default": {
+					"type": "string"
+				}
+			}
+		},
+		"commandInput": {
+			"type": "object",
+			"description": "Configuration for command execution input",
+			"required": ["type", "id", "command"],
+			"additionalProperties": true,
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "command"
+				},
+				"id": {
+					"type": "string",
+					"pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+					"description": "Unique identifier for the input"
+				},
+				"command": {
+					"type": "string",
+					"description": "Command to execute"
+				},
+				"args": {
+					"type": "array",
+					"description": "Command arguments",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"input": {
+			"oneOf": [
+				{ "$ref": "#/definitions/promptStringInput" },
+				{ "$ref": "#/definitions/pickStringInput" },
+				{ "$ref": "#/definitions/commandInput" }
+			]
+		},
+		"stdioServer": {
+			"type": "object",
+			"description": "Configuration for STDIO server",
+			"required": ["command"],
+			"additionalProperties": true,
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "stdio"
+				},
+				"command": {
+					"type": "string",
+					"description": "Command to start the server"
+				},
+				"cwd": {
+					"type": "string",
+					"description": "The working directory for the server command",
+					"default": "${workspaceFolder}"
+				},
+				"args": {
+					"type": "array",
+					"description": "Command arguments",
+					"items": {
+						"type": "string"
+					}
+				},
+				"env": {
+					"type": "object",
+					"description": "Environment variables passed to the server",
+					"additionalProperties": {
+						"type": ["null", "string", "number"]
+					}
+				},
+				"envFile": {
+					"type": "string",
+					"description": "Path to environment variables file",
+					"examples": ["${workspaceFolder}/.env"]
+				}
+			}
+		},
+		"httpServer": {
+			"type": "object",
+			"description": "Configuration for Streamable HTTP or SSE endpoint",
+			"required": ["url"],
+			"additionalProperties": true,
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["http", "sse"],
+					"description": "The type of endpoint"
+				},
+				"url": {
+					"type": "string",
+					"format": "uri",
+					"description": "The URL of the Streamable HTTP or SSE endpoint"
+				},
+				"headers": {
+					"type": "object",
+					"description": "Additional HTTP headers to send with requests",
+					"additionalProperties": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"server": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/stdioServer"
+				},
+				{
+					"$ref": "#/definitions/httpServer"
+				}
+			]
+		}
+	}
+}

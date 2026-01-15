@@ -1,5 +1,29 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with Rust-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# Rust
+.analyze/
+*.pdb
+debug/
+mutants.out*/
+target/
+*.d
+cargo-install-update-lock
+Cargo.lock
+Cargo.toml.orig
+crates-io-index/
+*.dll
+*.dSYM/
+*.dylib
+*.exe
+*.rlib
+*.rmeta
+*.so
 
 # Visual Studio Code
 .vscode/*
@@ -58,6 +82,7 @@
 *.zst
 
 # Backup Files
+*.bk
 *.bak
 *.gho
 *.ori

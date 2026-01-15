@@ -1,5 +1,20 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with Java/JVM-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# Java / JVM
+target/
+.gradle/
+build/
+
+# Eclipse
+.classpath
+.project
+.settings/
 
 # Visual Studio Code
 .vscode/*

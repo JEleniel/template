@@ -1,5 +1,20 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with .NET-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# .NET
+/bin/
+/obj/
+/.vs/
+*.user
+*.suo
+*.dll
+*.exe
+*.pdb
 
 # Visual Studio Code
 .vscode/*

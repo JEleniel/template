@@ -1,5 +1,23 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with Python-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
 
 # Visual Studio Code
 .vscode/*

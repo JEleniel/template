@@ -1,5 +1,19 @@
+#+#+#+#+######################################################################
+# This file is a template.
+# It is a copy of the root .gitignore with Go-specific ignores added at top.
+#+#+#+#+######################################################################
+
 # Project specific
 # Add files and directories specific to your project that should be ignored here
+
+# Go
+bin/
+*.test
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
 
 # Visual Studio Code
 .vscode/*

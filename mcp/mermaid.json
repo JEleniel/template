@@ -1,0 +1,9 @@
+{
+	"$schema": "./MCP.schema.json",
+	"servers": {
+		"mermaid-mcp-http": {
+			"url": "https://mcp.mermaidchart.com/mcp",
+			"type": "http"
+		}
+	}
+}

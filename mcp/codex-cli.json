@@ -1,0 +1,9 @@
+{
+	"$schema": "./MCP.schema.json",
+	"servers": {
+		"codex-cli": {
+			"command": "npx",
+			"args": ["-y", "@cexll/codex-mcp-server"]
+		}
+	}
+}

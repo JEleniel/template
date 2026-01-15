@@ -1,57 +1,32 @@
 ---
-applyTo: '*.md*'
+applyTo: '*.md'
 ---
 
 # Markdown Style Guide
 
-This document defines formatting and style conventions for all Rust codez These rules are enforced by the project's `rustfmt.toml` configuration.
+This document defines formatting and style conventions for Markdown files.
 
----
+The source of truth for enforcement is `.markdownlint.json`.
 
-## Documentation Conventions
+## Guidelines
 
--   Use clear, well-structured GitHub‑Flavored Markdown (GFM).
--   Match the tone, style, and structure of existing documentation.
--   Cross-reference related docs where relevant; include appropriate direct links.
--   Cite project details with file and section references.
-
-## Formatting Rules
-
--   Include blanks around fences = true,
--   Include blanks around lists = true,
--   Include blanks around tables = true,
--   Use grave (backtick) code fences and always include a language. Use `text` if no other language applies.
--   Example commands should show output = true,
--   Use underscore for emphasis and asterisks for strong.
--   Increment heading increment by one level at a time. Do not skip levels.
--   Do not use heading 1 except for the first line of the file.
--   Use atx style headings (with #) starting at the first character of the line and a single space after the hash marks.
--   Use dashes for horizontal rules.
--   Let lines wrap naturally. Do not hard wrap lines.
--   Do not use link fragments = true,
--   Include link image reference definitions = true,
--   Do not use collapsed of shortcut link image styles.
--   Indent sublists by one tab.
--   Use hard tabs for indentation.
--   Include alternative text for images.
--   Do not use bare URLs. Use link references instead.
--   Do not put blank lines inside blockquotes.
--   Sibling headings must be unique.
--   Do not use emphasis or strong as a heading.
--   No empty links = true,
--   Consolidate blank lines
--   Do not use two spaces together.
--   Do not use reversed links
--   Format code according to the language and other guidelines specified in the language section of the style guide.
--   Do not include additional spaces inside emphasis or strong, links, or code spans.
--   no trailing punctuation = true,
--   no trailing spaces
--   Use sequential numbers for ordered lists.
--   End the file with a single trailing newline = true,
--   Ensure tables have both leading and trailing pipe characters and that all rows have the correct column count. Align column according to the type of data.
--   Each nested unordered list should have a different bullet style.
--   Inline HTML is allowed but should be avoided unless necessary.
-
-## Enforcement and usage
-
-These rules are enforced by the repository's Markdownlint configuration (`.markdownlint.json`). Validate and autofix files with the project's Markdownlint setup.
+- You MUST use only ATX headings (`#`, `##`, …) and do not indent them.
+- You MUST use a single H1.
+- You MUST increase heading levels one at a time; do not skip levels.
+    * Sibling headings must be unique.
+- You MUST NOT use emphasis/strong as the entire heading text.
+- You MUST NOT hard-wrap lines in paragraphs.
+- You MUST NOT use two spaces together, or leave trailing spaces.
+- You MUST end files with exactly one trailing newline.
+- You MUST avoid multiple blank lines together.
+- You MUST use dashes for first level lists, asterisks for second level, and pluses for third. Repeat this pattern for deeper levels.
+- Ordered lists MUST use sequential numbers.
+- You MUST use fenced code blocks with backticks.
+- You MUST include a language for all code blocks. Use `text` when no specific language applies.
+- When documenting a command, include sample output.
+- Do not use bare URLs; use Markdown links. Avoid reversed links. Do not create empty links.
+- Link fragments (anchors) are allowed.
+- Provide alternative text for images.
+- You MAY use inline HTML but SHOULD avoid it unless it is necessary.
+- You MUST use leading and trailing pipe characters for all table rows and ensure consistent column counts in every row.
+- Keep blank lines around tables, code blocks, callouts, and headings.
