@@ -1,66 +1,24 @@
 # Project specific
 # Add files and directories specific to your project that should be ignored here
 
-# Visual Studio Code
-.vscode/*
-!.vscode/*.code-snippets
-!.vscode/extensions.json
-!.vscode/launch.json
-!.vscode/settings.*.json
-!.vscode/settings.json
-!.vscode/tasks.json
-.history/
-.vscode-test
-*.vsix
-.codacy
-
-# JetBrains IDEs
-.idea/
-*.iml
-
-# Vim swap files
-*.swp
-*.swo
-*.swx
-
-#Ignore IDE specific AI instructions
-.github/instructions/IDE.instructions.md
-
-# Archive Files
-*.7z
-*.bz2
-*.bzip
-*.bzip2
-*.cab
-*.deb
-*.dmg
-*.egg
-*.gem
-*.gz
-*.gzip
-*.iso
-*.jar
-*.lzma
-*.msi
-*.msix
-*.msm
-*.msp
-*.rar
-*.rpm
-*.tar
-*.tgz
-*.txz
-*.tzst
-*.xar
-*.xpi
-*.xz
-*.zip
-*.zst
-
-# Backup Files
-*.bak
-*.gho
-*.ori
+# Rust / Cargo
+target/
+**/*.rs.bk
+**/*.rs.orig
+**/*.rs.bak
+*.rlib
+*.rmeta
+*.dSYM
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.lo
 *.orig
 
 # Cache, Temporary, and Other Common Files
@@ -117,14 +75,15 @@ config.json
 !config.default.json
 !config.example.json
 
-# Linux Cruft
+# Platform-specific Files
+## Linux
 *~
 .directory
 .fuse_hidden*
 .nfs*
 .Trash-*
 
-# Windows Cruft
+## Windows
 $RECYCLE.BIN/
 [Dd]esktop.ini
 ehthumbs.db
@@ -134,7 +93,7 @@ ehthumbs_vista.db
 Thumbs.db
 Thumbs.db:encryptable
 
-# MacOS Cruft
+## macOS
 ._*
 .apdisk
 .AppleDB
@@ -152,3 +111,37 @@ Thumbs.db:encryptable
 Icon
 Network Trash Folder
 Temporary Items
+
+# Cache, Temporary, and Misc
+.cache/
+.temp/
+temp/
+tmp/
+*.tmp
+*.rej
+
+# Logs and Diagnostics
+logs/
+*.log
+*-debug.log*
+*-error.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids/
+*.pid
+*.pid.lock
+*.seed
+
+# Security Assets
+*.pem
+*.key
+*.crt
+*.cert
+*.csr
+*.der
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pvk
