@@ -8,13 +8,13 @@ applyTo: '**/*'
 
 **Version**: 2.0.0
 
-Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed for direct machine consumption by LLMs, agents, reasoners, and automated tools; in addition any view a human wants can be automatically generated.
+Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed so that any interpretation, such as view diagrams, can be generated from the model; and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
 
 **One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
 ## Models
 
-The model is the central piece of the architecture and is a collection of cards that have links describing their relationships. Cards represent the elements of the design, described as nouns. Links represent how the elements interact, and are tagged with verbs (for human convenience).
+The model is the central piece of the architecture and is a collection of cards that have links describing their relationships, starting from a `Mission`. Cards represent the elements of the design, described as nouns. Links represent how the elements interact, and are tagged with verbs (for human convenience).
 
 Any pair of cards in the model can be described using simple sentences:
 
@@ -60,10 +60,11 @@ graph
 
 ### Cards
 
-A card contains the information about an element of the model. The cards themselves and the links between them do not encode semantic meaning; they represent the elements of the architecture and their connections.
+A card contains the information about an element of the model and the links to other elements. The cards themselves and the links between them do not encode semantic meaning (see [Invariant Rules](#invariant-rules)). Cards also have an `attributes` property that allows additional, arbitrary information to be included. Card files should be "pretty printed" using `prettier`.
 
 Each card is comprised of:
 
+<<<<<<< Updated upstream
 - `uuid` - A unique identifier (UUID v4 or v7) that never changes for the life of the card
 - `id` - A short, machine-friendly name for the card in snake case
 - `card_type` - The architectural type represented by the card in snake case
@@ -77,6 +78,46 @@ Each card is comprised of:
 - `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.
 
 Every card file must include a `"$schema"` field. Tooling should prefer a schema copy placed alongside the `mission` card for validation and portability.
+=======
+- `$schema` - the relative link to the Aurora schema file included with the model(s) in the model home.
+- `id` - A unique identifier assigned to the card composed from a predefined prefix per `card_type` followed by a sequentially assigned integer per card type. If the model is extended, additional prefixes must also be issued for new card types. Once issued to a card the `id` MUST NOT change. If `card_type` changes, a new card should be issued and the original moved to the `status` "Deleted" with an appropriate audit history entry added. This enables traceability of the model over time.
+
+**Example Names**:
+
+- MIS-001
+- DRI-001
+- DRI-002
+- REQ-001
+- REQ-002
+
+- `card_type` - The architectural element represented by the card in title case. See [Common Cards](#common-cards) for examples
+- `card_subtype` - An optional refinement of the `card_type` in title case. See [Common Cards](#common-cards) for examples.
+- `name` - A concise human-readable name for the card in title case
+- `description` - Details regarding the element the card represents
+- `status` - the status of an implementable element such as a `Feature`
+	+ A common lifecycle is: "Proposed", "Backlog", "Design", "Implementation", "Review", "Pre-Release", "Released", "Deprecated", "Retired", "Deleted".
+	+ Any other series of lifecycle states that make sense for the model may be used, as long as they are kept consistent per type across the model.
+- `links` - pointers to other cards establishing relationships
+	+ `target` - the destination card `id`
+	+ `relationship` - verb describing the impact for human reference
+- `audit_trail` - a record of the version and a history of the events (created/edited/deleted) the card has been through
+	+ `version` - A semver version number for the card that is incremented when the card changes.
+		* The major version is incremented for changes that alter the meaning or definition of the element, such as changing the `card_subtype`, updating the `name`, or adjusting the `description` in a way that changes meaning. The `status` moving to `Deleted` is also a major increment.
+		* The minor version is incremented for changes that do not alter the element's definition, such as revising the phrasing of the `description` without changing meaning, or a change in `status` other than to "Deleted".
+		* Insignificant changes, such as typographic or grammatical corrections, increase the patch version.
+	+ `hash` - an optional SHA256 hash of the card with the hash temporarily set to `null` to calculate the hash
+	+ `history` - an array of objects capturing the audit history of the card
+		* `editor` - the identity of the entity making the change. Agents should use the name of their host (e.g. "Copilot") and, if acting as a particular role, a colon followed by a space and the agent role name, for example "Copilot: BackendDeveloper".
+		* `timestamp` - the UTC time of the edit in RFC3339 format with millisecond resolution
+		* `event` - the type of change event, one of: `created`, `edited`, `deleted`
+- `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects. See [Common Cards](#common-cards) for examples.
+>>>>>>> Stashed changes
+
+#### The Compressed Model
+
+In order to make the model easier for implementing agents to process and save context space, a compressed model file may be generated named `{mission id}.agent.json` for agent reference in the model home that conforms to the `Aurora.compact.schema.json` in the model home.
+
+The compressed file will have all of the cards in a top level array named `cards` and will have the `audit_trail` stripped from each. The compressed file may be "pretty printed" but that is not required.
 
 #### Common Cards
 
@@ -156,23 +197,35 @@ Links are intentionally free-form; the `relationship` verb is descriptive for hu
 
 ##### The `mission` card
 
+<<<<<<< Updated upstream
 The root card of the model is _always_ a `mission` card. The `mission` card captures the overarching purpose and goal of the model. A given model must only have a single `mission` card. All paths must lead away from the `mission`.
+=======
+The root card of the model is _always_ a `Mission` card. The `Mission` card captures the overarching purpose and goal of the model.
+>>>>>>> Stashed changes
 
 ##### The `boundary` card
 
+<<<<<<< Updated upstream
 The `boundary` card represents a logical grouping of other cards, in other words, they contain them. `boundary` cards frequently "contain" `system`, `application`, `node`, `process`, `state_machine`, and similar higher-level cards, and optionally their descendants. They are linked between a parent and the contained card, e.g., parent --> boundary --> contained, always in parallel to another link.
 
 A `boundary` card may include an attribute named `recursive` (boolean, default false). If true, the boundary includes all descendants of `target` _in the current view_. Because the cards contained by a boundary may form local loops rendering engines have to be careful when traversing the descendants.
+=======
+The `Boundary` (BND) card represents a logical grouping of other cards, in other words, they contain them. For simplicity in the model, a parent card includes a `Boundary` and a boundary contains a link to a single target card; in order to represent complex boundaries, a `Boundary` card may include an attribute named `recursive` (boolean, default false). If true, the boundary includes all descendants of the contained card (the contains target) in the current view. Because the cards contained by a boundary may form local loops rendering engines have to be careful when traversing the descendants. `Boundary` cards frequently "contain" `System`, `Application`, `Node`, `Process`, `State Machine`, and similar higher-level cards, and optionally their descendants. They are linked between a parent and the contained card, e.g., parent -- includes --> `Boundary` -- contains --> target, always in parallel to another link.
+>>>>>>> Stashed changes
 
-When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider warning when a recursive boundary could expand to an unusually large number of nodes in common views.
+When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider encountering a card previously traversed as a terminal point to prevent recursion.
 
 **Example of a Boundary in a Model**:
 
 ```mermaid
+<<<<<<< Updated upstream
 ---
 config:
   layout: elk
 ---
+=======
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+>>>>>>> Stashed changes
 graph LR
 	a(A)
 	boundary([Boundary])
@@ -186,11 +239,15 @@ graph LR
 **Example of a Boundary Rendered in a View**:
 
 ```mermaid
+<<<<<<< Updated upstream
 ---
 config:
   layout: elk
 ---
 %%{init: {'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+=======
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+>>>>>>> Stashed changes
 graph LR
 	a(A)
 
@@ -200,8 +257,8 @@ graph LR
 
 	a -- verb --> b
 
-classDef dashed stroke-dasharray:5 5;
-class Boundary dashed
+	classDef cls_boundary stroke-dasharray:5 5;
+	class Boundary cls_boundary
 ```
 
 ##### The `note` Card
@@ -211,10 +268,14 @@ The `note` card is purely an annotation to the model. They only have an incoming
 **Example**:
 
 ```mermaid
+<<<<<<< Updated upstream
 ---
 config:
   layout: elk
 ---
+=======
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+>>>>>>> Stashed changes
 graph LR
 	card[Card]
 	note[Note]@{shape: card}
@@ -222,14 +283,21 @@ graph LR
 	card -.- note
 ```
 
-#### Card Files
+#### Model Folders and Card Files
 
+<<<<<<< Updated upstream
 Cards are stored as JSON files, one file per card. The model always starts from the `mission` and forms a directed graph. `note` cards are leaf annotations (with only an incoming link) attached to another card. Files are named in the form `{id}-{uuid}.json`, in lowercase. If a `card_subtype` exists, name it as `{card_subtype}-{id}-{uuid}.json`.
 
 The model is stored in a folder named `aurora`, with subfolders named for the `card_type` in title case, e.g., `aurora/Requirement`. The only exception is the `mission` card, which should always be stored at `aurora/mission-{uuid}.json` to provide a consistent entry point.
+=======
+Models are stored in a folder named `aurora` (model home) with the root `Mission` card(s) in the model home and a subfolder named for the `id` of the mission containing all other cards (mission home). The mission home is divided further into a subfolder for each `card_type`. Multiple models may share a model home.
 
-If a repo has a `schemas/Aurora.schema.json` then that is the canonical version. Second, the version included with a particular model is canonical _to that model_ since it will be the version the model was built against. The copy at `.github/instructions/Aurora.schema.json` is for agent use; it should be updated if out of sync with the canonical version.
+Each model starts with a single `Mission` card in the model home named `MIS-{number}-{name with spaces converted to underscores}.json`, for example `aurora/MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json`. Like all cards, the number is issued sequentially by card type.
+>>>>>>> Stashed changes
 
+All other cards are stored as a separate JSON files, named for the card's `id`, e.g., `REQ-001.json`. All cards starting from a shared model home must conform to the `Aurora.schema.json` schema in that model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.schema.json`, if present, or the `.github/instructions/Aurora.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
+
+<<<<<<< Updated upstream
 To prevent issues with validation across high-security environments and multiple schema versions, any tooling or agent starting a model should place a copy of the schema with the `mission` card and require all card JSON files to include a `"$schema"` entry that points to that local copy.
 
 An `aurora/` folder containing a schema copy and one or more `mission-*.json` files is considered a model root. Each `mission` card roots a separate model; multiple models may share the same `aurora/` folder.
@@ -245,9 +313,29 @@ aurora
   │    └─ find_the_signal-2c7e1a4b-9f3d-4c6a-8e52-0f7b1d9a3c84.json
   ├─ Requirement
   │    └─ analyze_breach_data_dumps-b6f0e2d9-1a4c-4f8b-9c37-52a1e8d4f6b0.json
+=======
+Compact model files must conform to the `Aurora.compact.schema.json` schema in the model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.compact.schema.json`, if present, or the `.github/instructions/Aurora.compact.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
+
+**Example Folder and File Structure**:
+
+```text
+aurora
+  ├─ Aurora.schema.json
+  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
+  ├─ MIS-002-Write_User_Documentation_for_Aurora.json
+  ├─ MIS-001
+  │    ├─ Driver
+  │    │    ├─ DRI-001.json
+  │    │    └─ DRI-002.json
+  │	   └─ Requirement	 
+  │	   	    └─ REQ-001.json
+  ├─ MIS-002
+  │    ├─ Driver
+... etc
+>>>>>>> Stashed changes
 ```
 
-The exact format can be found in the canonical JSON schema at `schemas/Aurora.schema.json`.
+An entire model home may be stored in a ZIP-compressed file to allow for portability as long as the folder structure is preserved.
 
 ### Logical Structure
 
@@ -257,15 +345,27 @@ By using `boundary` cards and card subtypes almost any structure can be mapped o
 
 ### Invariant Rules
 
+<<<<<<< Updated upstream
 1. **The `mission` Card**: All models must start with a single `mission` card that summarizes the high-level "why" of the project. The `mission` card must only have outgoing links, and serves as the root of a directed graph.
 
 2. **Direction (graph links)**: All links must lead away from the `mission` card. There must be a route from `mission` to every card. The graph is not acyclic; local loops can and often do exist, for example when a state model returns to the starting state.
 
 3. **Hierarchy**: The model forms a directed graph rooted in the `mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `state → condition → state`) and event/action-driven transitions, as long as those links do not create a path out of the local area and back to `mission`.
+=======
+1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links, and serves as the root of a directed graph.
+
+2. **Direction (graph links)**: All links must lead away from the `Mission` card. There must be a route from `Mission` to every card. The graph is not acyclic; local loops can and often do exist, for example when a state model returns to the starting state. Traversing any path starting from `Mission` must have an increasing number of links and end either in a leaf card or a previously seen card (local loop).
+
+3. **Hierarchy**: The model forms a directed graph rooted in the `Mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `State` → `Condition` → `State`) and event/action-driven transitions, as long as no link creates a path back to `Mission`. This ensures that all loops terminate locally.
+>>>>>>> Stashed changes
 
 4. **Semantics**: links have a `relationship` field that describes them but does not convey semantic meaning by itself. The relationship is meant to describe how one element impacts another. Semantic meaning is derived from the link and relationship when a view is rendered.
 
+<<<<<<< Updated upstream
 5. **Every other card**: Other than the `mission` all cards must have at least one incoming link. They must also have a path from the `mission` card. Cards may have more than one incoming or any number of outgoing links.
+=======
+5. **Every other card**: Other than the `Mission` card, all cards must have at least one incoming link. They must also have a path from the `Mission` card. These cards may have more than one incoming or any number of outgoing links.
+>>>>>>> Stashed changes
 
 6. **Validation**: All `links[].target` values must reference existing cards by `uuid`.
 
@@ -273,16 +373,25 @@ By using `boundary` cards and card subtypes almost any structure can be mapped o
 
 Views are generated by selecting a set of card types (and optionally subtypes) to include and rendering a diagram showing those cards, and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
 
-In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node. The text should be wrapped in outer quotation marks and inner graves (back ticks), e.g., ``"`Type<br />Name Property'"`` or ``"`Type (subtype)<br />Name Property'"`` to allow the use of Markdown for formatting (like line breaks).
+In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node.
 
-Our tools add a few enhancements to improve the look and readability of the diagrams:
+## Default Tooling
 
+<<<<<<< Updated upstream
 - Mermaid shapes are used to help distinguish different types of cards.
 - Boundaries are rendered as a dashed outline around the elements they contain.
 - Links to `note` cards are rendered as dotted lines.
+=======
+### `aurora_cli`
+>>>>>>> Stashed changes
 
-## Examples of Common Views
+- Validates models
+- Generates human readable Markdown copies
+- Generates Markdown files containing views
+- Bumps the major, minor, and patch versions (for manual edits)
+- Generates the compact model files
 
+<<<<<<< Updated upstream
 ### Component View
 
 A Component View shows the system's runtime and logical components, their public interfaces, and how they compose and depend on each other to realize features and services.
@@ -556,6 +665,72 @@ graph
 	constraint -- limits --> activity
 
 	note ---> application
+=======
+### Mermaid Rules
+
+Every Mermaid diagram must start with the following line before the diagram type line that enables the "Elk" layout engine and makes subgraphs transparent (for boundaries):
+
+```text
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+```
+
+Mermaid diagrams should use the "graph LR" diagram type. The diagram text should be separated into ordered sections separated by a single blank line:
+
+1. The node definitions, named for the `id` of the card.
+2. The links between cards.
+3. The `classDef` entries (specified below)
+4. The `class` assignments (specified below)
+
+Graph nodes should have their text wrapped in Mermaid style Markdown quoting, specifically a quotation mark, a grave, the text, another grave, and a closing quotation mark. This enables the use of bold and line breaks. Node text should include the `card_type` in bold, a line break (`<br />`) and the `name` of the card.
+
+**Graph Node Format**:
+
+```text
+	{id}["`**{card_type}**<br />{name}`"]
+```
+
+**Example Graph Node**:
+
+```text
+	MIS-001(("`**Mission**<br />Enable_Deterministic_Aurora_CLI_Tooling`"))
+```
+
+Use tabs for indentation. Every line after the diagram type should be indented at least one tab. Elements in subgraphs should be indented an additional tab.
+
+Every Mermaid diagram must include the appropriate `classDef` entries from the following list, along with `class` lines assigning cards to the appropriate entry. Use the single line form of `class`, e.g., `class REQ-001,REQ-002 cls_requirement;`:
+
+```text
+	classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
+	classDef cls_mission fill:#022c22,color:#FFFFFF
+	classDef cls_driver fill:#064e3b,color:#FFFFFF
+	classDef cls_requirement fill:#065f46,color:#FFFFFF
+	classDef cls_capability fill:#052e16,color:#FFFFFF
+	classDef cls_feature fill:#14532d,color:#FFFFFF
+	classDef cls_actor fill:#1a2e05,color:#FFFFFF
+	classDef cls_story fill:#365314,color:#FFFFFF;
+	classDef cls_condition fill:#422006,color:#FFFFFF
+	classDef cls_control fill:#713f12,color:#FFFFFF
+	classDef cls_constraint fill:#854d0e,color:#FFFFFF;
+	classDef cls_system fill:#172554,color:#FFFFFF
+	classDef cls_application fill:#1e3a8a,color:#FFFFFF
+	classDef cls_component fill:#1e40af,color:#FFFFFF
+	classDef cls_interface fill:#082f49,color:#FFFFFF
+	classDef cls_artifact fill:#1e293b,color:#FFFFFF
+	classDef cls_asset fill:#334155,color:#FFFFFF;
+	classDef cls_data_store fill:#075985,color:#FFFFFF
+	classDef cls_test fill:#022c22,color:#FFFFFF;
+	classDef cls_deployment fill:#1e1b4b,color:#FFFFFF;
+	classDef cls_node fill:#312e81,color:#FFFFFF;
+	classDef cls_node_instance fill:#3730a3,color:#FFFFFF;
+	classDef cls_process fill:#2e1065,color:#FFFFFF
+	classDef cls_activity fill:#4c1d95,color:#FFFFFF
+	classDef cls_event fill:#5b21b6,color:#FFFFFF
+	classDef cls_state_machine fill:#4a044e,color:#FFFFFF
+	classDef cls_state fill:#701a75,color:#FFFFFF
+	classDef cls_risk fill:#881337,color:#FFFFFF;
+	classDef cls_threat fill:#4c0519,color:#FFFFFF;
+	classDef cls_note fill:#1f2937,color:#FFFFFF;
+>>>>>>> Stashed changes
 ```
 
 ### Story View

@@ -1,7 +1,7 @@
 ---
 name: BackendDeveloper
 description: Implements Rust services following architectural patterns defined by the Architect agent.
-model: GPT-5 mini (copilot)
+model: GPT-5.1-Codex
 handoffs:
     - agent: UIDeveloper
       label: -> UIDeveloper
@@ -17,7 +17,7 @@ You implement Rust services under `src/` following the architectural patterns de
 
 ## Responsibilities
 
-- Implement features mapped in `AGENT_PROGRESS.md` according to the Aurora cards.
+- You MUST implement the code according to the Aurora model either located at `docs/design/aurora/` or the user specified path.
 - Ensure that all code passes the tests built by the Test Developer agent.
 - Maintain high code quality, readability, and performance.
 

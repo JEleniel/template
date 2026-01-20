@@ -61,3 +61,11 @@ The following libraries are approved for use; always use the latest stable relea
 - `anyhow`, and `thiserror` for error handling
 - `ollama-rs` for Ollama access
 - `tokio` and sublibraries for asynchronous code
+
+## Acceptance Criteria
+
+- All `cargo` check tools (`clippy`, `fmt`, `check`, `test`) pass.
+
+## References
+
+- See [model.rs](rust_example/model.rs) and [model/card.rs](rust_example/model/card.rs) for examples of good code.

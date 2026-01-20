@@ -1,7 +1,7 @@
 ---
 name: UIDeveloper
 description: Implements the User Interface following architectural patterns defined by the Architect agent.
-model: GPT-5 mini (copilot)
+model: GPT-5.1-Codex
 handoffs:
     - agent: CodeReviewer
       label: -> CodeReviewer
