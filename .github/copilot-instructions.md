@@ -16,7 +16,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 ## General Coding Guidelines
 
-- You MUST use relative paths unless absolutely necessary (e.g., system paths, tooling requirements, etc.). Links in documentation MUST be relative to the document.
+- You MUST use relative paths for local files unless absolutely necessary (e.g., system paths, tooling requirements, etc.). Links in documentation MUST be relative to the document.
 - You MUST conform to best practices for the language you are coding in. Language-specific configuration files (e.g., `rustfmt.toml`, `.markdownlint.json`, and `.prettierrc.json`) are authoritative and override general style rules.
 - You MUST use tabs whenever possible for indentation unless the formatter and associated configuration specify otherwise. Do not fight the formatter. If a file could use tabs but has spaces for indentation, keep the file consistent and report the exception to the user.
 - You MUST organize code into logical modules that conform to the _single responsibility_ principle and the language-specific style.
@@ -28,6 +28,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - No global variables; global constants are allowed only in a dedicated constants file.
 - Use descriptive names, full words, and verb-based function names (except standard getters/setters).
 - Tests must prove behavior. Do not write null tests that only call functions without validation.
+- This project follows Test Driven Development, so failing tests will be written by the TestDeveloper before the BackendDeveloper or UIDeveloper write the code.
 
 ## Security by Default
 
@@ -45,10 +46,17 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 ## Prohibited Actions
 
 - You MUST NOT write or execute custom scripts, or run Python, Perl, or Node ad-hoc.
+<<<<<<< Updated upstream
     * Any multi-line terminal input (anything that contains a newline, including heredocs) is a script.
     * A single-line pipeline using `|` is a single instruction and is allowed.
     * Do not use command chaining operators such as `&&` or `;`.
     * You may use approved tools (listed later in this file), shell commands, IDE tools, and MCP plugins.
+=======
+    + Any multi-line terminal input (anything that contains a newline, including heredocs) is a script.
+    + A series of commands joined using pipeline (`|`) is a single instruction for this purpose and is allowed.
+    + Do not use command chaining operators such as `&&` or `;`.
+    + You may use approved tools (listed later in this file), shell commands, IDE tools, and MCP plugins.
+>>>>>>> Stashed changes
 - You MUST NOT branch from or open a PR to `main`.
 - When performing a review, you MUST NOT create summary or review documents unless specifically instructed to do so. Review and summary information MUST go in the `AGENT_PROGRESS.md` file.
 - You MUST NOT use the `gh` command line tool. It is not installed.
@@ -80,10 +88,11 @@ The Planner owns the plan structure, but all agents must follow the same format 
 The links in this example are illustrative; you MUST use actual links relevant to the project and relative to the `AGENT_PROGRESS.md`.
 
 ```markdown
--   [ ] ({id}) **{name}**
-    *   Status: {status}
-    *   [Aurora Feature Card](.github/instructions/example_feature_card-11111111-1111-4111-8111-111111111111.json)
-    *   [GitHub Issue #123](https://github.com/example/repo/issues/123)
+-   [ ] **{{owner}}** ({id}) **{name}**
+    * Status: {status}
+    * Next Actions: ...
+    * [Aurora Feature Card](.github/instructions/example_feature_card-11111111-1111-4111-8111-111111111111.json)
+    * [GitHub Issue #123](https://github.com/example/repo/issues/123)
 ```
 
 ### Changelog
@@ -118,11 +127,12 @@ You MAY only create or modify files within an owned area when you are explicitly
 
 ## Agent Behavior
 
+- If an `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
 - When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `AGENT_PROGRESS.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
 - Before opening or creating any file, you MUST read the relevant `*.instructions.md` files for that file type or language, if one exists.
-- You MUST NOT pause until the entire task has been completed unless you need clarification or have been instructed to do so.
+- You MUST ask any questions you have before you begin work. Once you start, you MUST NOT pause until your work is complete unless absolutely necessary.
 
 ## Tools
 
