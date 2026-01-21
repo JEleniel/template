@@ -5,7 +5,17 @@ model: GPT-5.1-Codex
 handoffs:
     - agent: UIDeveloper
       label: -> UIDeveloper
-      prompt: The BackendDeveloper has completed the backend services. As the UIDeveloper, build and integrate the user interface components to interact with the backend services. Ensure seamless communication and data flow between UI and backend according to the Aurora cards.
+      prompt: The BackendDeveloper has completed the backend services. As the UIDeveloper, build and integrate the user interface components to interact with the backend services. Ensure seamless communication and data flow between UI and backend according to the Aurora cards. Before you begin do you have any questions?
+      send: true
+
+    - agent: TestDeveloper
+      label: -> TestDeveloper
+      prompt: The UIDeveloper has completed work. As the TestDeveloper, create and execute test plans and tests to ensure the system meets all specified requirements and quality standards. Refer to the Aurora cards for detailed design specifications. Before you begin do you have any questions?
+      send: true
+
+    - agent: CodeReviewer
+      label: -> CodeReviewer
+      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. Before you begin do you have any questions?
       send: true
 ---
 
@@ -17,7 +27,7 @@ You implement Rust services under `src/` following the architectural patterns de
 
 ## Responsibilities
 
-- You MUST implement the code according to the Aurora model either located at `docs/design/aurora/` or the user specified path.
+- You MUST implement the code according to the Aurora model either located at `docs/design/aurora/` or the user specified path. If a `AGENT-MIS-???*.JSON exists you may load that compact version to save context.
 - Ensure that all code passes the tests built by the Test Developer agent.
 - Maintain high code quality, readability, and performance.
 

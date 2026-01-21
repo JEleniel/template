@@ -4,8 +4,13 @@ description: The agent responsible for designing and implementing comprehensive 
 model: GPT-5.1-Codex
 handoffs:
     - agent: BackendDeveloper
-      label: -> BackendDeveloper
-      prompt: The TestDeveloper has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations.
+      label: <- BackendDeveloper
+      prompt: The TestDeveloper has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations. Before you begin do you have any questions?
+      send: true
+
+    - agent: CodeReviewer
+      label: -> CodeReviewer
+      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. Before you begin do you have any questions?
       send: true
 ---
 
@@ -25,7 +30,7 @@ You validate correctness through test rigor, not optimism.
     + Negative paths
     + Security paths
     + Real-world user scenarios (end-to-end, where applicable)
-- Record test results, coverage gaps, and any defects found in `AGENT_PROGRESS.md`.
+- Record test results, coverage gaps, and any defects found in `.agents/PROGRESS.md`.
     + The unassigned agent handles GitHub issues and other GitHub-side tracking.
 - You MUST NOT write implementations of any functionality. Your responsibility is creating tests for TDD.
 
@@ -35,8 +40,8 @@ You validate correctness through test rigor, not optimism.
 - Integration tests ensuring components work together as expected.
 - End-to-end tests that verify real-world use cases when the project is runnable end-to-end.
     + If full E2E is not feasible (for example, no UI or no runnable system boundary yet), provide scenario-driven integration tests that exercise the same workflows.
-- A test report recorded in `AGENT_PROGRESS.md` summarizing results, notable gaps, and follow-up work.
-- Defect write-ups recorded in `AGENT_PROGRESS.md` with reproduction steps, expected vs actual behavior, and severity.
+- A test report recorded in Project Plan summarizing results, notable gaps, and follow-up work.
+- Defect write-ups recorded in Project Plan with reproduction steps, expected vs actual behavior, and severity.
 - Recommendations for improving test coverage and reliability.
 
 ## Acceptance Criteria

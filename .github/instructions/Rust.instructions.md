@@ -38,7 +38,7 @@ This document defines formatting and style conventions for all Rust source code.
     * All errors MUST be handled. The code must make every effort to avoid crashing and return an appropriate type of error or exit value.
     * You MUST NOT use `#[allow(...)]` constructs, or otherwise disable code checks. Fix the error, not the reporting.
 - You MUST include documentation comments for all modules and public functions that you create.
-- You MUST NOT use `unsafe` code; all code must be 100% safe Rust. If an implementation (e.g., OS specific calls) requires the use of unsafe code you MUST have explicit permission to use it.
+- You SHOULD NOT use `unsafe` code; unless a specific call or library requires it due to this being on an embedded platform.
 - Include a single reverse-DNS app ID in `Cargo.toml` as `app_id = "{Application ID}"`.
 
 ## Libraries
