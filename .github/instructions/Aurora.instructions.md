@@ -90,26 +90,26 @@ Each card is comprised of:
 
 #### Model Storage
 
-- Model home: `aurora/` contains `Aurora.schema.json` and root `Mission` card files.
-- Root `Mission` file name: `MIS-{number}-{name_with_underscores}.json`, using sequential numbering per card type.
-- Mission home: `aurora/{mission id}/` with subfolders per `card_type`; all other cards are stored as `{id}.json`.
-- All cards conform to `Aurora.schema.json`; if missing, copy `.github/instructions/Aurora.schema.json` before creating the first `Mission` card.
-- Optional compact model: `{mission id}.agent.json` in model home, conforming to `Aurora.compact.schema.json`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/Aurora.compact.schema.json` if missing. The compact file may be "pretty printed" but is not required.
+- Model home: `aurora/` contains `Aurora.schema.jsjson` and root `Mission` card files.
+- Root `Mission` file name: `MIS-{number}-{name_with_underscores}.jsjson`, using sequential numbering per card type.
+- Mission home: `aurora/{mission id}/` with subfolders per `card_type`; all other cards are stored as `{id}.jsjson`.
+- All cards conform to `Aurora.schema.jsjson`; if missing, copy `.github/agents/details/Aurora.schema.jsjson` before creating the first `Mission` card.
+- Optional compact model: `{mission id}.agent.jsjson` in model home, conforming to `Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/agents/details/Aurora.compact.schema.jsjson` if missing. The compact file may be "pretty printed" but is not required.
 - The model home may be stored as a ZIP file if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 
 ```text
 aurora
-  ├─ Aurora.schema.json
-  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
-  ├─ MIS-002-Write_User_Documentation_for_Aurora.json
+  ├─ Aurora.schema.jsjson
+  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.jsjson
+  ├─ MIS-002-Write_User_Documentation_for_Aurora.jsjson
   ├─ MIS-001
   │    ├─ Driver
-  │    │    ├─ DRI-001.json
-  │    │    └─ DRI-002.json
+  │    │    ├─ DRI-001.jsjson
+  │    │    └─ DRI-002.jsjson
   │	   └─ Requirement
-  │	   	    └─ REQ-001.json
+  │	   	    └─ REQ-001.jsjson
   ├─ MIS-002
   │    ├─ Driver
 ... etc

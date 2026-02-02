@@ -1,5 +1,5 @@
 ---
-applyTo: "**/AGENT-MIS-*.jsjson"
+applyTo: 'docs/design/aurora/AGENT-MIS-*.jsjson'
 ---
 
 # Aurora Compact Model Instructions (Read-Only)
@@ -8,7 +8,7 @@ This instruction exists to help agents consume Aurora models safely and efficien
 
 ## What to use
 
-Before you perform and work, you MUST understand the compact Aurora Model(s) rlevant to your work:
+Before you start work, you MUST understand the compact Aurora Model(s) relevant to your work, if present:
 
 - `docs/design/aurora/AGENT-MIS-*.jsjson`
 
@@ -48,6 +48,6 @@ A compact export is a single JSON object with a top-level `cards` array.
 
 When validating meaning (card types, relationship verbs, and view definitions), you MUST use the canonical registries referenced by the repository:
 
-- Cards: [`.github/instructions/details/1-Card_Definitions.md`](details/1-Card_Definitions.md)
-- Relationships: [`.github/instructions/details/2-Relationship_Definitions.md`](details/2-Relationship_Definitions.md)
-- Views: [`.github/instructions/details/3-View_Definitions.md`](details/3-View_Definitions.md)
+- Cards: [`../agents/details/1-Card_Definitions.json`](../agents/details/1-Card_Definitions.json)
+- Relationships: [`../agents/details/2-Relationship_Definitions.json`](../agents/details/2-Relationship_Definitions.json)
+- Views: [`../agents/details/3-View_Definitions.json`](../agents/details/3-View_Definitions.json)

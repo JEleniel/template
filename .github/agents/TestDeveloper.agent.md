@@ -5,7 +5,7 @@ model: GPT-5.1-Codex
 handoffs:
     - agent: BackendDeveloper
       label: -> BackendDeveloper
-    prompt: Implement the behavior required by the tests. Keep changes minimal; update `.agents/PROGRESS.md`.
+      prompt: Implement the behavior required by the tests. Keep changes minimal; update `.agents/PROGRESS.md`.
       send: true
 ---
 

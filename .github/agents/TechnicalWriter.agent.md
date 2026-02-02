@@ -5,7 +5,7 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: DocumentationReviewer
       label: -> DocumentationReviewer
-  prompt: Review docs for accuracy, clarity, and completeness. Record findings in `.agents/REVIEW-DOCUMENTATION.md`.
+      prompt: Review docs for accuracy, clarity, and completeness. Record findings in `.agents/REVIEW-DOCUMENTATION.md`.
       send: true
 ---
 

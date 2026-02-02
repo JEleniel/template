@@ -5,7 +5,7 @@ model: GPT-5.2-Codex
 handoffs:
     - agent: UIDeveloper
       label: -> UIDeveloper
-  prompt: Implement UI per design and backend contracts. Keep changes minimal; update `.agents/PROGRESS.md`.
+      prompt: Implement UI per design and backend contracts. Keep changes minimal; update `.agents/PROGRESS.md`.
       send: true
 
     - agent: TestDeveloper

@@ -5,7 +5,7 @@ model: GPT-5.2-Codex
 handoffs:
     - agent: CodeReviewer
       label: -> CodeReviewer
-    prompt: Review the changes for correctness, security, and maintainability. Record findings in `.agents/REVIEW-CODE.md`.
+      prompt: Review the changes for correctness, security, and maintainability. Record findings in `.agents/REVIEW-CODE.md`.
       send: true
 ---
 

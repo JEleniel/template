@@ -5,7 +5,7 @@ model: GPT-5.2-Codex
 handoffs:
     - agent: TestDeveloper
       label: -> TestDeveloper
-  prompt: Add tests for the new UI behavior. Capture gaps and results in `.agents/PROGRESS.md`.
+      prompt: Add tests for the new UI behavior. Capture gaps and results in `.agents/PROGRESS.md`.
       send: true
 
     - agent: CodeReviewer
