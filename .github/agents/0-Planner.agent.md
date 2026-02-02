@@ -32,4 +32,5 @@ See `../copilot-instructions.md` for the required plan item fields.
 ## Deliverables
 
 - An up-to-date Project Plan file that accurately reflects the current project plans, task breakdowns, and statuses.
+- An up-to-date Project Plan file that accurately reflects the current project plans, task breakdowns, and statuses.
 - Clear and actionable task lists for new features or initiatives, ready for handoff to implementation agents.

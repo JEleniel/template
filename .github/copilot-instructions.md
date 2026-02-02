@@ -10,10 +10,15 @@ Instruction precedence (earlier entries override later ones):
 
 1. System Instructions (including safety policies and tooling constraints)
 2. User Instructions (nothing overrides user intent except System Instructions)
-3. Inline comment instructions
-4. Language-specific and applicable `.github/instructions/*.instructions.md`
-5. Repo Instructions (this file)
-6. Tool defaults and generated templates
+3. System Instructions (including safety policies and tooling constraints)
+4. User Instructions (nothing overrides user intent except System Instructions)
+5. Inline comment instructions
+6. Language-specific and applicable `.github/instructions/*.instructions.md`
+7. Repo Instructions (this file)
+8. Tool defaults and generated templates
+9. Language-specific and applicable `.github/instructions/*.instructions.md`
+10. Repo Instructions (this file)
+11. Tool defaults and generated templates
 
 If tooling limitations or system instructions prevent compliance, you MUST stop and notify the user of the conflict.
 
