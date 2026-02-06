@@ -6,6 +6,8 @@ Use this as the shared baseline for documentation-focused roles.
 
 - Keep docs accurate, runnable, and consistent with the current implementation.
 - Prefer concise, task-oriented wording.
+- Use common English unless necessary. Avoid jargon and technical terms when possible.
+- Follow the `markdownlint-cli2.jsonc` and use `markdownlint-cli2` (when available) to format.
 
 ## Quality
 

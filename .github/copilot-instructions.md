@@ -4,9 +4,11 @@ His praeceptis sine exceptione pare.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 and updated in RFC 8174.
 
-## Instruction Precedence
+## Invariants
 
-Instruction precedence (earlier entries override later ones):
+### Instruction Precedence
+
+Instructions MUST be obeyed in the following order, earlier overriding later:
 
 1. System Instructions (including safety policies and tooling constraints)
 2. User Instructions (nothing overrides user intent except System Instructions)
@@ -17,74 +19,53 @@ Instruction precedence (earlier entries override later ones):
 
 If tooling limitations or system instructions prevent compliance, you MUST stop and notify the user of the conflict.
 
-## Default Response Style
+### Work Tracking (Memory & .agents)
 
-- Be concise by default. Prefer 3-7 bullets or 2-6 sentences.
-- Avoid repeating the prompt, restating plans, or narrating obvious steps.
-- Only use long explanations when the user asks for them or when correctness depends on it.
-- Prefer a 5-7 bullet summary format. Always end with an estimate of the current context usage as a percent.
-
-## Common Project Folders
-
-- User documentation is at `docs/` (if present).
-- Design documentation is at `docs/design/` (if present).
-- Agent work artifacts are under `.agents/`.
-- Working assets (styles, images) are at `assets/`.
-- Do not modify `.github/` unless the user asks.
-
-## Work Tracking (Memory & .agents)
-
-When context usage approaches 75%, hand off to a new session with this message: "Read your memory, `.github/copilot-instructions.md`, and `.agents/PROGRESS.md` to resume".
-
-If `.agents/` does not exist yet, you MUST create it when first needed.
+The `.agents/` folder is for agent use. You MUST create it, and the files in it, if they do not exist. You MUST NOT worry about formatting or linting the files in `.agents/`. Some tooling cannot open files above a fixed size limit (for example, ~50MB). Keep these files below that limit by de-duplicating and compressing as needed.
 
 Minimum required files:
 
-- `.agents/PROJECT_BRIEF.md` (summary of the project)
-- `.agents/PROGRESS.md` (Project Plan)
-- `.agents/MAP.md` (navigation notes for the repo)
+- `.agents/PROJECT_BRIEF.md` - A summary of the project and notes on changes to the scope
+- `.agents/PROGRESS.md` - The Project Plan, written by the Planner and maintained by _all_ agents
+- `.agents/MAP.md` - Notes on the layout of the source, locations of key functions, and other things to help agents navigate without searching
 
-Create review files only when needed:
+Review agents MUST create the appropriate review file, and other agents MUST act on the feedback:
 
 - `.agents/REVIEW-CODE.md`
 - `.agents/REVIEW-SECURITY.md`
 - `.agents/REVIEW-DOCUMENTATION.md`
 - `.agents/REVIEW-RELEASE.md`
 
-You MUST NOT worry about formatting or linting the files in `.agents/`.
+### Changelog
 
-Some tooling cannot open files above a fixed size limit (for example, ~50MB). Keep `.agents/*` below that limit by de-duplicating and compressing as needed.
+Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.github/`, `docs/`, or `.agents/` in the changelog. Consolidate similar or related entries to keep the log concise.
 
-## General Coding Guidelines
+### Other Invariants
 
-- Use relative paths for local files unless a tool requires an absolute path.
-- Follow best practices for the language being edited. Language-specific configs (for example `rustfmt.toml`, `.markdownlint-cli2.jsonc`, `.prettierrc.json`) are authoritative.
-- Keep code modular and cohesive (single responsibility). Prefer small functions (~20 lines) and small modules (~200 lines) when practical.
-- Prefer explicit, typed errors in libraries/modules and ergonomic context at application boundaries.
-- Never log secrets; treat logs as potentially public.
-- Tests must prove behavior. Do not write null tests.
-- You MUST NOT disable checks/tests (for example `// @ts-nocheck`, `#[allow(...)]`). Fix the underlying issue instead.
-- Unimplemented paths must fail fast and clearly communicate intent (`todo!`, `unimplemented!`, etc.).
-- Apply OWASP guidance, secure-by-design principles, and Twelve-Factor App principles.
+- You MUST NOT modify `.github/**/*` unless the user asks.
+- You MUST NOT rely solely on git status/diffs; track your own changes.
+- You MUST NOT revert changes you did not make.
+- If you are writing code, you MUST read and follow [Baseline-Developer.md](agents/details/Baseline-Developer.md).
+- If you are writing documentation you MUST read and follow [Baseline-Documentation](agents/details/Baseline-Documentation.md)
+- If you are reviewing code or documentation, you MUST read and follow [Baseline-Reviewer](agents/details/Baseline-Reviewer.md)
 
-## Plan Format Contract (All Agents)
+## Behavior
 
-The Planner owns the plan structure, but all agents must follow the same format when updating `.agents/PROGRESS.md`:
+### Response Style
 
-- Each item has a stable identifier, short title, and explicit status.
-- Each item includes: **Owner**, **Links**, and **Next Action**.
+- Always be concise by default. Prefer one to two paragraphs or 5-10 bullets.
+- Only use long explanations when the user asks for them or when correctness depends on it.
+- Avoid repeating the prompt, restating plans, or narrating obvious steps.
+- Prefer a 5-10 bullet summary format. Always end with an estimate of the current context usage as a percent.
 
-## Tools
+### Tools
 
 - Use MCP tools for GitHub interactions (do not use `gh`).
 - Use the Mermaid.js MCP to render/validate Mermaid diagrams when creating diagrams.
 - Terminal and scripting constraints are defined in `.github/instructions/IDE.instructions.md`, if present.
 
-## Changelog
+## Common Project Folders
 
-Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.github/`, `docs/`, or `.agents/` in the changelog.
-
-## Additional Guidelines
-
-- Do not rely solely on git status/diffs; track your own changes.
-- Do not revert changes you did not make.
+- User documentation is at `docs/` and starts at `docs/README.md` (if present).
+- Design documentation is at `docs/design/` (if present).
+- Working assets (styles, images) are at `assets/`.
