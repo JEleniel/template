@@ -19,7 +19,7 @@
 			"files": ["*.md", "*.markdown"],
 			"options": {
 				"tabWidth": 4,
-				"useTabs": true
+				"useTabs": false
 			}
 		}
 	],
@@ -30,6 +30,6 @@
 	"singleAttributePerLine": false,
 	"singleQuote": true,
 	"tabWidth": 4,
-	"trailingComma": "all",
+	"trailingComma": "none",
 	"useTabs": true
 }

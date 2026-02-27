@@ -1,6 +1,8 @@
 # Code of Conduct
 
-We strive to be an egalitarian, ethical, transparent organization. This commitment is core to who we are, and we believe that it should extend to our community. This Code of Conduct outlines the standards we expect from contributors to ensure that our shared values are reflected in our collaborations, discussions, and actions. By participating, you help us maintain a positive and welcoming environment for all.
+We strive to be an egalitarian, ethical, and transparent organization. This commitment is core to who we are, and we believe it should extend to our community.
+
+This Code of Conduct outlines the standards we expect from contributors and community members to ensure our shared values are reflected in our collaborations, discussions, and actions. By participating, you help us maintain a positive and welcoming environment for all.
 
 ## Core Values
 
@@ -26,7 +28,7 @@ Examples of behavior that contributes to a positive environment for our communit
 
 ### Zero Tolerance Activities
 
-**First offense**: The violator shall be permanently banned from our organization and comminuty without the possibility of appeal or repeal. If appropriate, a report shall be filed with law enforcement. Further legal action may be taken if necessary.
+**First offense**: The violator shall be permanently banned from our organization and community without the possibility of appeal or repeal. If appropriate, a report shall be filed with law enforcement. Further legal action may be taken if necessary.
 
 - Abuse, threats, or acts of violence against people or animals
 - Discussion of or participation in illegal activities
@@ -37,9 +39,9 @@ Examples of behavior that contributes to a positive environment for our communit
 
 **First offense**: A private, written warning shall be sent to the violator providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
 
-**Second offense**: The violater shall be banned from our organization and our community. The ban may be appealed.
+**Second offense**: The violator shall be banned from our organization and our community. The ban may be appealed.
 
-**Further offenses**: The violator shall be permanently banned from our organization and comminuty without the possibility of appeal or repeal.
+**Further offenses**: The violator shall be permanently banned from our organization and community without the possibility of appeal or repeal.
 
 - Discussions of politics or political topics
 - Discussion of theological, religious, or spiritual topics
@@ -55,15 +57,15 @@ Examples of behavior that contributes to a positive environment for our communit
 
 **Second offense**: A second private, written warning shall be sent to the violator. A public apology shall be requested. All activity by the violator shall be flagged for approval, moderation, or review for 30 days from the date of the warning. If no further violations occur during that period the violation shall be closed.
 
-**Third offense**: The violater shall be banned from our organization and our community for 30 days. The ban may be appealed.
+**Third offense**: The violator shall be banned from our organization and our community for 30 days. The ban may be appealed.
 
-**Further offenses**: If the violator has previously been temporarily banned, any futher offense of the same type shall result in an immediate, permanent banned from our organization and comminuty without the possibility of appeal or repeal.
+**Further offenses**: If the violator has previously been temporarily banned, any further offense of the same type shall result in an immediate, permanent ban from our organization and community without the possibility of appeal or repeal.
 
 **Examples**:
 
 - Repeated use of offensive language
-- Contributing material with questionable legal status, e.g. copyright
-- Plagarism
+- Contributing material with questionable legal status (for example, copyright infringement)
+- Plagiarism
 
 ## Scope
 
@@ -78,11 +80,11 @@ This Code of Conduct applies within all community spaces, including but not limi
 
 ## Enforcement Process
 
-1. **Report Reception**: All reports will be reviewed within 72 hours
-2. **Investigation**: Community leaders will investigate reported violations
-3. **Decision**: Appropriate action will be taken based on the severity
-4. **Communication**: Both reporter and reported party will be informed of decisions
-5. **Appeals**: Temporary bans may be appealed through designated channels
+1. **Report reception**: All reports will be reviewed within 72 hours.
+2. **Investigation**: Community leaders will investigate reported violations.
+3. **Decision**: Appropriate action will be taken based on the severity.
+4. **Communication**: Both the reporter and the reported party will be informed of decisions.
+5. **Appeals**: Temporary bans may be appealed through designated channels.
 
 ## Enforcement Responsibilities
 
@@ -98,5 +100,6 @@ All community leaders shall respect the privacy and security of the reporter of 
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/),
-version 2.1, available at <https://www.contributor-covenant.org/version/2/1/code_of_conduct.html>.
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.
+
+See the full text at [https://www.contributor-covenant.org/version/2/1/code_of_conduct.html](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html).

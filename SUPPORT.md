@@ -1,50 +1,63 @@
 # Support
 
-Please make sure you follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+Need help? This document explains the best way to get support for this project.
 
-## Documentation
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md) in all project spaces.
 
-The first place to look for answers is our:
+## Where to start
 
-- [Official Documentation](https://github.com/{username}/{repo}/wiki)
-- [Frequently Asked Questions](https://github.com/{username}/{repo}/wiki/FAQ)
-- [Troubleshooting Guide](https://github.com/{username}/{repo}/wiki/Troubleshooting)
+Before opening a new thread, check:
 
-## I Have a Question
+- Documentation (customize this link for your project): [https://github.com/OWNER/REPO/wiki](https://github.com/OWNER/REPO/wiki)
+- Troubleshooting guide (customize): [https://github.com/OWNER/REPO/wiki/Troubleshooting](https://github.com/OWNER/REPO/wiki/Troubleshooting)
+- FAQ (customize): [https://github.com/OWNER/REPO/wiki/FAQ](https://github.com/OWNER/REPO/wiki/FAQ)
 
-Before asking a question:
+If your project does not use a wiki, replace the links above with your docs site or `docs/` paths.
 
-1. Search existing [Discussions](https://github.com/{username}/{repo}/discussions) to see if your question has been answered
-2. Review the [documentation](https://github.com/{username}/{repo}/wiki)
-3. Check the [FAQ](https://github.com/{username}/{repo}/wiki/FAQ)
+## Questions
 
-If you still need help:
+For “how do I…” questions and usage help, use GitHub Discussions:
 
-1. Open a [Q&A Discussion](https://github.com/{username}/{repo}/discussions/new?category=q-a)
-2. Use a descriptive title
-3. Provide as much context as possible:
-   + Version you're using
-   + Environment details (OS, runtime versions, etc.)
-   + Steps to reproduce
-   + Relevant logs or screenshots
-   + Content of the "About" dialog
+- Browse discussions: [https://github.com/OWNER/REPO/discussions](https://github.com/OWNER/REPO/discussions)
+- Ask a question (Q&A): [https://github.com/OWNER/REPO/discussions/new?category=q-a](https://github.com/OWNER/REPO/discussions/new?category=q-a)
 
-## Before Opening a New Issue
+When asking a question, include:
 
-1. Ensure you are using the latest version
-2. Search through existing issues:
-   + [Bug Reports](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Abug)
-   + [Feature Requests](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Aenhancement)
-   + [Documentation Requests](https://github.com/{username}/{repo}/issues?q=is%3Aissue+label%3Adocumentation)
+- What you expected to happen and what happened instead.
+- The version/commit you are using.
+- Your environment (OS, runtime versions, configuration).
+- Logs or screenshots (redact secrets).
 
-## Opening a New Issue
+## Bugs and feature requests
 
-Choose the appropriate template:
+For confirmed bugs and actionable work items, open an issue:
 
-- [🐛 Bug Report](https://github.com/{username}/{repo}/issues/new?template=bug_report.yml)
-- [💡 Feature Request](https://github.com/{username}/{repo}/issues/new?template=feature_request.yml)
-- [📚 Documentation Request](https://github.com/{username}/{repo}/issues/new?template=documentation_request.yml)
+- Issues: [https://github.com/OWNER/REPO/issues](https://github.com/OWNER/REPO/issues)
+- New issue: [https://github.com/OWNER/REPO/issues/new/choose](https://github.com/OWNER/REPO/issues/new/choose)
 
-Please provide as much information as possible when opening an issue. The more details you provide, the better we can help you.
+Before opening an issue:
 
-> **Note:** Replace `{username}` and `{repo}` in links with your GitHub username and repository name when using this template.
+- Search existing issues and pull requests to avoid duplicates.
+- Make sure you are on a supported version.
+
+## Security issues
+
+Do not open public issues for security vulnerabilities.
+
+See [SECURITY.md](SECURITY.md) for responsible disclosure instructions.
+
+## Response times
+
+This is a template. Set expectations for your project.
+
+- Questions: within X business days
+- Issues: within X business days
+- Security reports: see [SECURITY.md](SECURITY.md)
+
+## Customize this template
+
+Before publishing, update the following:
+
+- Replace `OWNER/REPO` with your GitHub organization/user and repository name.
+- Replace the documentation links with the sources you actually maintain.
+- Add a support email or chat link if you offer one (avoid sharing private contact details if you cannot staff them).

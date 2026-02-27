@@ -1,73 +1,83 @@
 # Security Policy
 
-## Reporting Security Issues
+We take security seriously and appreciate responsible disclosure.
 
-We take security bugs seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+## Reporting a vulnerability
 
-### Reporting a Vulnerability
+Do **not** report security vulnerabilities through public GitHub issues, pull requests, or discussions.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+Use one of the private channels below (customize for your project):
 
-Instead, please use one of these channels:
+- GitHub Security Advisories: [https://github.com/OWNER/REPO/security/advisories/new](https://github.com/OWNER/REPO/security/advisories/new)
+- Email: [security@yourdomain.example](mailto:security@yourdomain.example)
 
-- Use GitHub's security advisory feature: [Report a Vulnerability](https://github.com/{username}/{repo}/security/advisories/new)
-- For critical issues, you can encrypt your report using our [security team's PGP key](https://github.com/{username}.gpg)
+If you use PGP, link your public key here:
 
-Please include the following information in your report:
+- PGP public key: [https://github.com/OWNER.gpg](https://github.com/OWNER.gpg)
 
-- Description of the vulnerability
-- Steps to reproduce the issue
-- Potential impact
-- Any known mitigations
-- Any related references or CVEs
+### What to include
 
-### What to Expect
+Please include:
 
-When you submit a vulnerability report, our team will:
+- A clear description of the issue and the affected component.
+- Impact assessment (what an attacker can do).
+- Steps to reproduce or a proof of concept.
+- Version/commit information.
+- Any mitigations or workarounds you are aware of.
+- Relevant references (for example CVEs).
 
-1. Confirm receipt within 48 hours
-2. Provide a detailed response within 7 days
-3. Keep you informed about our progress
-4. Credit you in the security advisory (unless you prefer to remain anonymous)
+### What to expect
 
-> **Note:** Replace `{username}` and `{repo}` in links with your GitHub username and repository name when using this template.
+This is a template. Set expectations for your project.
+
+- Acknowledge receipt within 48 hours.
+- Provide a status update within 7 days.
+- Coordinate a fix and a disclosure timeline.
+- Credit reporters in the advisory if they would like (or keep them anonymous).
+
+## Supported versions
+
+Document which versions receive security fixes.
+
+| Version   | Supported |
+| --------- | --------- |
+| `main`    | Yes       |
+| `< 1.0.0` | No        |
 
 ## Scope
 
-If you believe you've found a security vulnerability in {repo}, we encourage you to let us know right away. We will investigate all legitimate reports and do our best to quickly fix the problem.
+In scope (examples):
 
-### In Scope
+- Remote code execution, injection, and sandbox escapes.
+- Authentication and authorization bypass.
+- Sensitive data exposure.
+- Privilege escalation.
+- Supply chain and dependency integrity issues.
 
-- Code injection
-- Authentication issues
-- Access control issues
-- Encryption issues
-- Data exposure
+Out of scope (examples):
 
-### Out of Scope
+- Denial of service without a realistic security impact.
+- Social engineering.
+- Physical attacks.
+- Vulnerabilities in third-party services not controlled by the project.
 
-- Bugs that don't have a security impact
-- DOS attacks
-- Spam attacks
-- Social engineering
-- Physical security
+## Security updates
 
-## Security Updates
+When a vulnerability is confirmed, we will:
 
-Security patches will be released as soon as possible after a vulnerability is confirmed. These updates will be:
+- Develop and test a fix.
+- Release a patch as soon as reasonably possible.
+- Document the change in release notes.
+- Publish a GitHub security advisory when appropriate.
 
-1. Released as a new version
-2. Documented in the release notes
-3. Published as a security advisory on GitHub
+## Bug bounty
 
-## Third-Party Modules
+Unless stated otherwise, this project does not offer a paid bug bounty.
 
-Report security bugs in third-party modules to the person or team maintaining the module. If the issue is confirmed, they will be responsible for fixing it and disclosing it to their users.
+## Customize this template
 
-## Bug Bounty
+Before publishing, update the following:
 
-While we don't offer a paid bug bounty program at this time, we are grateful to the security research community for helping us identify and address vulnerabilities.
-
-## Attribution
-
-We will publicly acknowledge security researchers who responsibly disclose vulnerabilities to us, unless they wish to remain anonymous.
+- Replace `OWNER/REPO` and `OWNER` with your GitHub organization/user and repository name.
+- Replace the email address with an inbox you actively monitor.
+- Replace the supported versions table with your real support policy.

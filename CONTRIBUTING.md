@@ -1,70 +1,136 @@
 # Contributing
 
-## Modifying the code
+Thanks for taking the time to contribute.
 
-- All contributors agree to the [Developer's Certificate of Origin](DCO.md)
-- Follow the GitHub guide for [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+By participating in this project, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Code Standards
+## Quick rules
 
-- Follow the official style guide for your programming language
-- Write clear, documented, and testable code
-- Include comments for complex logic
-- Keep functions focused and concise
-- Write meaningful variable and function names
-- Add unit tests for new functionality
-- Ensure all tests pass before submitting
+- Be kind, be clear, and assume good intent.
+- Keep changes small and focused.
+- Prefer tests and documentation with behavior changes.
+- All contributions must include a [DCO sign-off](DCO.md).
 
-## Pull Requests
+## Ways to contribute
 
-- Create a branch with a descriptive name
-- Make focused, single-purpose changes
-- Include comprehensive test coverage
-- Update documentation!
-- Follow the pull request template
-- Respond to review feedback promptly
-- Rebase your branch before merging
+- Report bugs.
+- Propose features or improvements.
+- Improve documentation.
+- Review pull requests.
+
+If you are unsure where to start, look for issues labeled “good first issue” or “help wanted”.
+
+## Before you start
+
+- Check existing [issues](https://github.com/OWNER/REPO/issues) and [pull requests](https://github.com/OWNER/REPO/pulls) to avoid duplication.
+- For security issues, do **not** open a public issue. Follow [SECURITY.md](SECURITY.md).
+
+## Development workflow
+
+1. Create a branch with a descriptive name (for example `fix-null-pointer` or `feature-rate-limits`).
+2. Make a focused set of changes.
+3. Add or update tests as needed.
+4. Update documentation where behavior changes.
+5. Open a pull request and respond to review feedback.
+
+Project-specific setup, build, and test commands belong in `README.md`. Keep this file focused on contribution expectations.
 
 ## Issues
 
-- Check existing issues before creating new ones
-- Use issue templates when available
-- Provide clear reproduction steps for bugs
-- Include system/environment details
-- Add relevant logs or screenshots
-- Tag issues appropriately
+When filing a bug, include:
+
+- Expected vs actual behavior.
+- Minimal reproduction steps.
+- Version/commit and environment details.
+- Logs and screenshots (redact secrets).
+
+For feature requests, include:
+
+- The user story / problem statement.
+- Non-goals and constraints.
+- Alternatives considered.
+
+## Pull requests
+
+### Quality bar
+
+- PRs should do one thing.
+- Keep diffs readable: avoid drive-by refactors.
+- Update tests and docs as part of the same PR when applicable.
+- Ensure CI is green before requesting review.
+
+### What to include
+
+- A clear description of the change and why it is needed.
+- Any relevant issue/discussion links.
+- Notes for reviewers (tradeoffs, follow-ups, rollout concerns).
+
+## Code standards
+
+- Follow the language/framework style guides for this project.
+- Prefer clear names and small, composable functions.
+- Comment only where intent is not obvious.
+- Avoid adding dependencies without strong justification.
+- Write tests that fail before they pass.
 
 ## Commits
 
-- All commits must be linked to one or more Issues or Discussions. Feel free to [open a new issue](/issues/new) if necessary
-- Write clear commit messages in the imperative mood
-- Keep commits atomic and focused
-- Sign your commits
-- Reference related issues in commit messages
+### Commit messages
 
-### Commit Message Examples
+Write commit messages in the imperative mood and keep them specific.
 
 Good examples:
 
-```
-feat: add user authentication system (#123)
-fix: resolve memory leak in data processing (#456)
-docs: update API documentation for new endpoints (#789)
+```text
+feat: add rate limit headers (#123)
+fix: handle empty input in parser (#456)
+docs: document configuration keys (#789)
 ```
 
 Bad examples:
 
-```
+```text
 fixed stuff
 updated code
 WIP
-quick fix for #123
+quick fix
 ```
 
-## Code Review
+### DCO sign-off (required)
 
-- Be respectful and constructive
-- Review changes thoroughly
-- Test the changes locally
-- Provide specific feedback
-- Approve only when satisfied
+All commits must include a DCO sign-off line.
+
+- Use your real name and email.
+- Use `git commit -s` to add the sign-off automatically.
+
+Example:
+
+```text
+Signed-off-by: Jane Doe <jane.doe@example.com>
+```
+
+## Code review
+
+For authors:
+
+- Be responsive to feedback.
+- Explain intent, not implementation trivia.
+- Prefer follow-up issues over scope creep.
+
+For reviewers:
+
+- Be respectful and concrete.
+- Ask questions early when something is unclear.
+- Approve when the change meets the bar, not when it is “perfect”.
+
+## Getting help
+
+If you get stuck, see [SUPPORT.md](SUPPORT.md).
+
+## Customize this template
+
+Before publishing, update the following:
+
+- Replace `OWNER/REPO` in the links in this file with your GitHub organization/user and repository name.
+- Adjust the contribution requirements (DCO/CLA, branching rules, review requirements) to match your project.
+- Remove sections you do not use.

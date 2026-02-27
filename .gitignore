@@ -1,27 +1,36 @@
 # Project specific
 # Add files and directories specific to your project that should be ignored here
 
-# Rust / Cargo
-target/
-**/*.rs.bk
-**/*.rs.orig
-**/*.rs.bak
-*.rlib
-*.rmeta
-*.dSYM
-*.exe
-*.out
-*.o
-*.obj
-*.dll
-*.so
-*.dylib
-*.a
-*.lib
-*.lo
-*.orig
+# ----- Uncomment this section to exclude Aurora model generated files -----
+# ----- Aurora model generated files -----
+# docs/design/README-MIS-*.md
+# docs/design/MIS-*.md
+# docs/design/MIS-*/**/*
+# docs/design/aurora/MIS-*/Compact.json
+# ----- End of Aurora model generated files -----
 
-# Cache, Temporary, and Other Common Files
+# Secrets, credentials, and settings
+.env*
+!.env.example
+*.cert
+*.crt
+*.csr
+*.der
+*.jks
+*.key
+*.keystore
+*.p12
+*.pem
+*.pfx
+*.pvk
+
+# Configuration Files
+config.json
+!config.default.json
+!config.example.json
+!config.schema.json
+
+# Cache and temporary files
 .cache/
 .temp/
 temp/
@@ -33,16 +42,7 @@ tmp/
 # direnv
 .direnv/
 
-# Security Files
-*.cert
-*.crt
-*.key
-*.keystore
-*.p12
-*.pem
-*.pfx
-
-# Logs and Diagnostics
+# Logs and diagnostics
 logs/
 *.log
 *-debug.log*
@@ -58,24 +58,16 @@ coverage.xml
 test-results/
 
 # Runtime data
-*.pfx
+pids/
 *.pid
 *.pid.lock
 *.seed
-pids/
 
-# Diff Files
+# Diff/Patch files
 *.diff
 *.patch
 
-# Configuration Files
-.env*
-!.env.example
-config.json
-!config.default.json
-!config.example.json
-
-# Platform-specific Files
+# Platform-specific Cruft
 ## Linux
 *~
 .directory
@@ -111,37 +103,3 @@ Thumbs.db:encryptable
 Icon
 Network Trash Folder
 Temporary Items
-
-# Cache, Temporary, and Misc
-.cache/
-.temp/
-temp/
-tmp/
-*.tmp
-*.rej
-
-# Logs and Diagnostics
-logs/
-*.log
-*-debug.log*
-*-error.log*
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
-# Runtime data
-pids/
-*.pid
-*.pid.lock
-*.seed
-
-# Security Assets
-*.pem
-*.key
-*.crt
-*.cert
-*.csr
-*.der
-*.jks
-*.keystore
-*.p12
-*.pfx
-*.pvk

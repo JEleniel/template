@@ -1,0 +1,33 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"description": "Node + TypeScript template package (customize as needed).",
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"rimraf": "^6.0.0",
+		"typescript": "^5.0.0"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"exports": {
+		".": {
+			"default": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"license": "UNLICENSED",
+	"main": "./dist/index.js",
+	"name": "template-node",
+	"private": true,
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"clean": "rimraf dist",
+		"typecheck": "tsc -p tsconfig.json --noEmit"
+	},
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"version": "0.0.0"
+}

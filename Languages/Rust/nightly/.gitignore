@@ -1,0 +1,128 @@
+# Project specific
+# Add files and directories specific to your project that should be ignored here
+
+# Rust
+.analyze/
+*.pdb
+debug/
+mutants.out*/
+target/
+*.d
+**/*.rs.bk
+*.crate
+*.profraw
+*.profdata
+cargo-install-update-lock
+Cargo.lock
+Cargo.toml.orig
+crates-io-index/
+*.dll
+*.dSYM/
+*.dylib
+*.exe
+*.rlib
+*.rmeta
+*.so
+
+# ----- Uncomment this section to exclude Aurora model generated files -----
+# ----- Aurora model generated files -----
+# docs/design/README-MIS-*.md
+# docs/design/MIS-*.md
+# docs/design/MIS-*/**/*
+# docs/design/aurora/MIS-*/Compact.json
+# ----- End of Aurora model generated files -----
+
+# Secrets, credentials, and settings
+.env*
+!.env.example
+*.cert
+*.crt
+*.csr
+*.der
+*.jks
+*.key
+*.keystore
+*.p12
+*.pem
+*.pfx
+*.pvk
+
+# Configuration Files
+config.json
+!config.default.json
+!config.example.json
+!config.schema.json
+
+# Cache and temporary files
+.cache/
+.temp/
+temp/
+tmp/
+*.tmp
+*.orig
+*.rej
+
+# direnv
+.direnv/
+
+# Logs and diagnostics
+logs/
+*.log
+*-debug.log*
+*-error.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Test results & coverage output
+.nyc_output/
+.coverage
+coverage/
+coverage.xml
+*.lcov
+test-results/
+
+# Runtime data
+pids/
+*.pid
+*.pid.lock
+*.seed
+
+# Diff/Patch files
+*.diff
+*.patch
+
+# Platform-specific Cruft
+## Linux
+*~
+.directory
+.fuse_hidden*
+.nfs*
+.Trash-*
+
+## Windows
+$RECYCLE.BIN/
+[Dd]esktop.ini
+ehthumbs.db
+ehthumbs_vista.db
+*.lnk
+*.stackdump
+Thumbs.db
+Thumbs.db:encryptable
+
+## macOS
+._*
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.com.apple.timemachine.donotpresent
+.DocumentRevisions-V100
+.DS_Store
+.fseventsd
+.LSOverride
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+Icon
+Network Trash Folder
+Temporary Items
