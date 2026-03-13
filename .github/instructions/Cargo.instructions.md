@@ -4,6 +4,9 @@ applyTo: '**/Cargo.toml'
 
 # Cargo.toml Best Practices
 
+- Prefer `mcp_cargo-mcp_*` for Cargo operations when available.
+- If unavailable, use the standard `cargo` CLI.
+
 ## Application Metadata
 
 - For applications targeting Apple or mobile platforms, include a single reverse-DNS app ID in `Cargo.toml` as package/workspace metadata (not a top-level Cargo key).
