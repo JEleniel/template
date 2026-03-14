@@ -9,8 +9,10 @@ applyTo: '**/Cargo.toml'
 
 ## Application Metadata
 
-- For applications targeting Apple or mobile platforms, include a single reverse-DNS app ID in `Cargo.toml` as package/workspace metadata (not a top-level Cargo key).
+- For applications targeting Apple or mobile packaging toolchains that require an application identifier, include a single reverse-DNS app ID in `Cargo.toml` as package/workspace metadata (not a top-level Cargo key).
+- Only add this metadata when a packaging or bundling toolchain will consume it.
 - Use a domain you control for reverse-DNS identifiers.
+- The `crystultima` namespace below is an example owned by the repo owner, not a required metadata key. Rename it to match your project or toolchain.
 - For package-level metadata:
 
 ```toml
@@ -27,11 +29,12 @@ app_id = "org.crystultima.<workspace_name>"
 
 ## Core Settings
 
-- Set `edition` to the latest stable value (`2024`) and declare `rust-version` (MSRV).
-- Include `license`, `repository`, `readme`, and a clear `description`.
+- Set `edition` to the current stable value supported by the repo or toolchain (`2024` at the time of writing) and declare `rust-version` (MSRV).
+- Include a clear `description`.
+- Include `license`, `repository`, and `readme` if those are available.
 - Do not use the deprecated `authors` field.
-- Use SPDX license identifiers.
-- Use explicit major semver ranges; never `"*"`.
+- Use SPDX license identifiers. Default to MIT/Apache dual licensing.
+- Use explicit semver requirements; never `"*"`. Prefer not to pin the patch number unless a specific fix or compatibility need requires it.
 - Minimize dependency count; separate `dev-` and `build-` dependencies.
 - Disable defaults when not required: `default-features = false`.
 - Features must be additive only; never change existing behavior.
