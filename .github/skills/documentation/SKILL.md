@@ -120,10 +120,4 @@ description: Use this skill when writing or updating documentation, including in
 
 ## Glossary
 
-- Common review terms (for example `Pass`, `Fail`, `N/A`, `Severity`, and `P0`-`P3`) are defined in the [Skills glossary](../GLOSSARY.md).
-- `Source of Truth`: The authoritative artifact used to verify a claim, such as code, a schema, configuration, or a protocol contract.
-- `Documentation Drift`: Divergence between documentation and implemented behavior.
-- `Prerequisite`: A requirement that must be satisfied before executing a procedure.
-- `Happy Path`: The expected successful flow under normal conditions.
-- `Failure Path`: The documented behavior and recovery steps when expected execution fails.
-- `Copy-Paste Safe`: Content that can be executed as written without causing unintended risk in normal environments.
+See the shared [Skills glossary](../GLOSSARY.md).

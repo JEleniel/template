@@ -109,9 +109,4 @@ description: Use this skill when creating or maintaining a project plan, includi
 
 ## Glossary
 
-- Common review terms (for example `Pass`, `Fail`, `N/A`, `Severity`, and `P0`-`P3`) are defined in the [Skills glossary](../GLOSSARY.md).
-- `Deliverable`: A concrete, verifiable outcome that proves task completion.
-- `Dependency`: Another task or condition that must be satisfied before the current task can start or complete.
-- `Blocked`: A status indicating work cannot proceed because a dependency, decision, or prerequisite is unresolved.
-- `Review Gate`: A task or checkpoint that exists specifically to verify readiness against an applicable checklist before downstream work continues.
-- `Technology-Agnostic`: Focused on outcomes and constraints rather than prescribing specific implementation technologies.
+See the shared [Skills glossary](../GLOSSARY.md).

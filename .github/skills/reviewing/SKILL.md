@@ -116,9 +116,4 @@ description: Use this skill when conducting an informal or formal review of code
 
 ## Glossary
 
-- Common review terms (for example `Pass`, `Fail`, `N/A`, `Severity`, and `P0`-`P3`) are defined in the [Skills glossary](../GLOSSARY.md).
-- `Finding`: A specific review issue supported by evidence.
-- `Evidence`: The artifact, behavior, or observation that supports a finding.
-- `Severity`: The relative importance of a finding based on risk, impact, and urgency.
-- `Verification Guidance`: Explicit steps to confirm a fix resolves the finding without introducing regressions.
-- `Smallest Safe Recommendation`: The minimum safe corrective action that resolves the issue without unnecessary collateral change.
+See the shared [Skills glossary](../GLOSSARY.md).

@@ -146,15 +146,4 @@ description: Use this skill when writing or modifying source code.
 
 ## Glossary
 
-- Common review terms (for example `Pass`, `Fail`, `N/A`, `Evidence`, `Severity`, and `P0`-`P3`) are defined in the [Skills glossary](../GLOSSARY.md).
-- `Details`: A concise statement of the specific condition that caused a review item to fail.
-- `Risk`: The expected negative outcome if the failed condition remains unresolved, including impact.
-- `Smallest Safe Fix`: The minimum change required to eliminate the failure without introducing new risk.
-- `Verification Guidance`: Explicit steps to prove that a fix works and that regressions were not introduced.
-- `Trust Boundary`: A point where data crosses between actors, systems, or components with different trust levels.
-- `Dependency Drift`: Unintended changes in dependency versions or resolution over time or across environments.
-- `Reproducible Build`: A build process that yields equivalent resolved dependencies and artifacts for the same inputs across machines and time.
-- `Unit`: The smallest independently testable construct, such as a function, type, class, or module.
-- `Encoding`: Transforming data so it is safely interpreted in its target context as data, not executable instructions. Encoding must match the target context and does not replace signing, validation, or authentication.
-- `Error`: A situation in which the expected state is not the actual state.
-- `Exception`: A situation that could not be predicted and cannot be safely handled in code.
+See the shared [Skills glossary](../GLOSSARY.md).
