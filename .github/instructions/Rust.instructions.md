@@ -8,10 +8,9 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 
 ## Formatting Rules
 
-- **Edition**: Use the edition specified in `Cargo.toml` (assume Rust 2024+ unless specified otherwise).
 - **Organization**: Organize code into cohesive modules; minimize top-level `*.rs` sprawl. Do not use `mod.rs`.
 - **Formatting**: Use `cargo fmt`.
-- **Indentation**: Use spaces; let `rustfmt` enforce indentation and alignment.
+- **Indentation**: Use tabs; let `rustfmt` enforce indentation and alignment.
 - **Line endings**: Use `\n`.
 - **Comments and docs**:
     - Keep comments accurate and up to date.
@@ -31,7 +30,7 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - Add documentation comments for new modules and new public items.
 - Avoid `unsafe` unless a specific API requires it.
 - Do not use functions that _only_ return a constant value.
-- Configure logging to write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr. Optionally log to a structured file.
+- When configuring logging, write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr. Optionally log to a structured file.
 
 ## Error Handling
 
