@@ -30,8 +30,9 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - Add documentation comments for new modules and new public items.
 - Avoid `unsafe` unless a specific API requires it.
 - When configuring logging, write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr. Optionally log to a structured file.
-- Unit testing exercises the inside of a module. Integration testing exercises the outside.
-- Place tests in a separate file named `<module>_tests.rs` in a subfolder under the module named `tests/` and bring them in using the `path` directive.
+- Unit testing exercises the inside of a module. Integration testing exercises the outside through public APIs.
+- Unit tests belong in a module-local `tests/` subfolder and may be brought in using the `path` directive.
+- Integration tests belong in the crate-root `tests/` directory.
 
 ## Prohibitions
 
@@ -48,9 +49,9 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - You MUST NOT swallow errors. They MUST all be handled or logged at minimum.
 - Any error that can be handled and recovered from should be.
 - Library code SHOULD return typed errors (prefer `thiserror`).
-- Executables and application boundaries (anywhere control leaves our code) MUST use `anyhow`.
+- Executable entrypoints and true application boundaries—places where control leaves our code to an external runtime, caller, or user-facing shell—MUST use `anyhow`.
 - All errors MUST be either handled or logged. The code should crash only if there is no choice.
 
 ## Acceptance Criteria
 
-- Relevant `cargo` checks pass (`fmt`, `clippy`, and targeted `test`).
+- For Rust work, relevant `cargo` checks pass (`fmt`, `clippy`, and targeted `test`).

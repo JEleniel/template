@@ -14,7 +14,7 @@ description: Use this skill when writing or modifying source code.
 - Failure Handling Focus: Handle failures intentionally; return or log errors cleanly.
 - Accessibility for User-Facing Behavior: For user-facing surfaces, require WCAG AA at minimum (AAA preferred where feasible).
 - The file-specific rules in `../../instructions/*.instructions.md` take precedence over these instructions.
-- Follow best practices for the language being edited. Language-specific configs (for example `rustfmt.toml`, `.markdownlint-cli2.jsonc`, `.prettierrc.json`) are authoritative.
+- Follow best practices for the language being edited. Language-specific configs (for example `rustfmt.toml`, `.markdownlint-cli2.jsonc`, `.prettierrc.json`) are authoritative for formatting and linting details, and file-specific instructions may call out relevant config files or exceptions.
 - Use the shortest acceptable path for local files.
 - Prefer mature, well-supported dependencies with GPL, MIT, or Apache-2.0 licenses.
     - Well-maintained heuristic (use judgment; not a checklist):
@@ -33,6 +33,7 @@ description: Use this skill when writing or modifying source code.
 
 - Prefer typed errors within libraries/modules.
 - Add context at application boundaries.
+- Language-specific instructions define ecosystem-specific error crates, boundary conventions, and other implementation details.
 - Avoid unchecked failures (`unwrap`, `expect`, panics) unless justified by an explicit invariant.
 - You MUST NOT disable checks/tests (for example `// @ts-nocheck`, `#[allow(...)]`). Fix the underlying issue instead.
 - Include helpful TRACE and DEBUG logging where appropriate for troubleshooting.
@@ -91,9 +92,9 @@ description: Use this skill when writing or modifying source code.
 
 1. Confirm the task scope, requirements, constraints, and success criteria from the user request and any available design artifacts. If critical information is missing, stop and get clarification before editing code.
 2. Inspect the relevant code, interfaces, tests, and configuration before making changes. Align the implementation with any requirements or design artifacts in `docs/design/` and any Aurora model present.
-3. Implement the smallest intended change that satisfies the request, following existing patterns and avoiding new dependencies unless clearly justified.
-4. Add or update tests for the happy path, edge cases, and failure paths needed to prove the behavior.
-5. Run the relevant formatting, linting, static analysis, and test commands for the affected language or ecosystem, and fix any issues introduced by the change.
+3. Implement the intended change that satisfies the request, following existing patterns and avoiding new dependencies unless clearly justified.
+4. Add or update tests for the happy path, edge cases, and failure paths needed to prove the behavior. Language-specific instructions define test organization and placement rules.
+5. Run the relevant formatting, linting, static analysis, and test commands for the affected language or ecosystem, and fix any issues introduced by the change. Repo instructions require verification before completion; file-specific instructions define language- and file-specific checks.
 6. Record any documentation notes or follow-up information needed to explain behavior changes, new features, or operational impact.
 7. If the request also requires architecture, planning, documentation-only work, or formal review output, switch to the appropriate skill for that phase.
 
@@ -133,7 +134,6 @@ description: Use this skill when writing or modifying source code.
 - Explicit assumptions, types, and effects.
 - Low coupling through minimal, stable interfaces.
 - Deterministic testability without elaborate setup.
-- Economy of change through small, predictable edits.
 - Deterministic behavior unless nondeterminism is explicitly modeled and documented.
 - Constraint-driven design that uses limitations to create focus rather than workarounds.
 

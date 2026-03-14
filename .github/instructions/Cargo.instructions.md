@@ -53,6 +53,7 @@ app_id = "org.crystultima.<workspace_name>"
 ## Approved libraries
 
 The following libraries are approved for use. Sublibraries include crates that share the parent prefix or are designed as companions.
+This section governs dependency allowance and selection only; language-specific instruction files define how approved crates are used.
 
 - `anyhow`, `thiserror` for error handling
 - `axum` (and sublibraries), `tower` (and sublibraries), `hyper` (and sublibraries) for web servers

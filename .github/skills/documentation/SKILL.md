@@ -54,7 +54,7 @@ description: Use this skill when writing or updating documentation, including in
 3. Update existing documentation in place unless a genuinely new artifact is needed for clarity, discoverability, or scope separation.
 4. Write or revise content so that prerequisites, inputs, outputs, examples, failure paths, and constraints are explicit where they matter to safe and correct use.
 5. Keep terminology, links, and cross-references consistent across related documents so readers can follow the documentation set without guessing.
-6. Validate the result against the deliverables and validation checklists in this skill, ensuring that links resolve and Markdown formatting passes.
+6. Validate the result against the deliverables and validation checklists in this skill, ensuring that links resolve, documentation claims are verified, and any applicable file-specific instructions (for example Markdown formatting rules) pass.
 7. If the request also requires code changes, planning, architecture work, or formal review output, switch to the appropriate skill for that phase.
 
 ## Validation Checklists
