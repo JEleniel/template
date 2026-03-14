@@ -1,4 +1,5 @@
 ---
+description: 'Agent directives for Cargo.toml metadata, dependencies, and package configuration.'
 applyTo: '**/Cargo.toml'
 ---
 

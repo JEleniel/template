@@ -1,5 +1,6 @@
 ---
-applyTo: '*.md'
+description: 'Agent directives for Markdown formatting and linting.'
+applyTo: '**/*.md'
 ---
 
 # Markdown Style Guide

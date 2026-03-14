@@ -1,5 +1,6 @@
 ---
-applyTo: '*.rs'
+description: 'Agent directives for Rust code structure, testing, and verification.'
+applyTo: '**/*.rs'
 ---
 
 # Rust Coding Guide
