@@ -1,20 +1,18 @@
 ---
 name: coding
-description: Guidelines for writing code of any kind.
+description: Use this skill when writing or modifying source code.
 ---
 
 # Coding Skill
-
-## When to use
-
-Use this skill when the task involves writing or modifying source code.
 
 ## General guidelines
 
 - If a `docs/design/aurora/` folder exists, read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
     - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
     - Use the full Aurora instructions only when applying the Architecture skill.
-- Code review guidance is canonical. Follow [Code Review Checklists and Principles](../CodeChecklistsAndPrinciples.md). If there is a conflict, the checklist wins.
+- Security-First Coding Mindset: Evaluate realistic misuse and abuse paths, especially at trust boundaries.
+- Failure Handling Focus: Handle failures intentionally; return or log errors cleanly.
+- Accessibility for User-Facing Behavior: For user-facing surfaces, require WCAG AA at minimum (AAA preferred where feasible).
 - The file-specific rules in `../../instructions/*.instructions.md` take precedence over these instructions.
 - Follow best practices for the language being edited. Language-specific configs (for example `rustfmt.toml`, `.markdownlint-cli2.jsonc`, `.prettierrc.json`) are authoritative.
 - Use the shortest acceptable path for local files.
@@ -31,12 +29,6 @@ Use this skill when the task involves writing or modifying source code.
     - Add dependencies at the narrowest practical scope (package-level, not workspace-wide) unless multiple crates truly share them.
     - Avoid new dependencies when the standard library or existing dependencies already solve the problem.
 
-## Invariants
-
-- Apply file/function size constraints exactly as defined in [Code Review Checklists and Principles](../CodeChecklistsAndPrinciples.md).
-
-- Unimplemented paths MUST fail fast and clearly communicate intent (`todo!`, `unimplemented!`, etc.).
-
 ## Errors and logging
 
 - Prefer typed errors within libraries/modules.
@@ -47,6 +39,46 @@ Use this skill when the task involves writing or modifying source code.
 - Log at boundaries with appropriate severity.
 - Never log secrets at any level.
 
+## Principles of Elegant Code
+
+- Clarity: Code is immediately understandable without external explanation.
+- Simplicity: Solve the problem with the smallest complete mechanism.
+- Conceptual Compression: Prefer better modeling over repetitive mechanics or terse cleverness.
+- Natural Mapping to the Domain: Let the structure mirror the problem space, not the implementation workaround.
+- Minimal Incidental Complexity: Every element should carry semantic weight.
+- Composability: Parts should combine orthogonally without special-case glue.
+- Predictability: Behavior should follow established patterns and avoid surprises.
+- Symmetry: Operations, data shapes, and error handling should follow balanced, reusable forms.
+- Effortless Extendibility: New features should fit existing structures rather than require new mechanisms.
+
+### Indications of Poor Code or Modeling
+
+- God Objects or God Modules.
+- Shotgun Surgery.
+- Deeply Nested Logic.
+- Primitive Obsession.
+- Leaky Abstractions.
+- Overgeneralization.
+- Hidden Complexity in Convenience APIs.
+- Heisencode.
+- Silent Data Transformation.
+
+## Things to Watch For
+
+### Failure and Risk Multipliers (a.k.a. "Foot-Guns")
+
+- Temporal Coupling.
+- Boolean Parameter Explosion.
+- Duplicated Logic.
+- Magic Values and Hidden Rules.
+- Constant Explosion.
+- Implicit Defaults.
+- Mutable Shared State.
+- Stringly-Typed Interfaces.
+- Unchecked Error Paths.
+- Configuration as Code Without Validation.
+- Global Initialization Side Effects.
+
 ## Deliverables
 
 - Source code is modular, clean, readable, idiomatic, and aligned with project conventions.
@@ -55,6 +87,56 @@ Use this skill when the task involves writing or modifying source code.
 - Notes added for the documentation writer explaining changes, new features, and other relevant information for the project documentation.
 - Linting, formatting, and static analysis checks are passing.
 
+## Operating Procedure
+
+1. Confirm the task scope, requirements, constraints, and success criteria from the user request and any available design artifacts. If critical information is missing, stop and get clarification before editing code.
+2. Inspect the relevant code, interfaces, tests, and configuration before making changes. Align the implementation with any requirements or design artifacts in `docs/design/` and any Aurora model present.
+3. Implement the smallest intended change that satisfies the request, following existing patterns and avoiding new dependencies unless clearly justified.
+4. Add or update tests for the happy path, edge cases, and failure paths needed to prove the behavior.
+5. Run the relevant formatting, linting, static analysis, and test commands for the affected language or ecosystem, and fix any issues introduced by the change.
+6. Record any documentation notes or follow-up information needed to explain behavior changes, new features, or operational impact.
+7. If the request also requires architecture, planning, documentation-only work, or formal review output, switch to the appropriate skill for that phase.
+
+## Validation Checklists
+
+### Secure Code Checklist
+
+- Untrusted input handled at every trust boundary with schemas, type checks, length limits, sanitization, and allow-lists.
+- Untrusted output contextually encoded before rendering or execution, with integrity verified by signatures, hashes, or checksums where required.
+- Authenticated, authorized, and auditable endpoints and APIs, with audit trails redacted of Non-Public Information (NPI).
+- Reuse of vetted implementations for security- and protocol-sensitive functionality.
+- Parameterized queries and safe APIs for SQL, search, shell, templates, and other external execution.
+- End-to-end data protection, including access controls, encryption at rest and in transit, minimized exposure in memory, and OS, HSM, or keychain-managed secrets where practical.
+- Secure defaults with no production debugging interfaces or verbose diagnostics unless explicitly enabled.
+- Sanitized warning and error messages free of Non-Public Information (NPI).
+- Continuously maintained dependencies with pinned inputs and resolved versions, lockfiles, explicit reviewed changes, and mitigated advisories.
+- Structured, tamper-resistant logging of security-relevant events.
+- Explicit trust boundaries enforced in code.
+- Minimal public surface area.
+
+### Error and Exception Handling Checklist
+
+- Rigorous tests that prove behavior; null tests are failures.
+- Coverage for critical edge cases and failure paths, not just happy paths.
+
+### General Code Quality Checklist
+
+- Source files no longer than 500 lines.
+- Functions no longer than 50 lines.
+- Intentional failure handling, with errors logged or returned cleanly.
+- WCAG AA minimum for user-facing behavior (AAA preferred where feasible).
+- Meaningful tests that validate outcomes and invariants.
+- Locality of reasoning and a single source of truth for each capability.
+- Single responsibility for each unit.
+- Correctness verified against requirements, tests, invariants, and edge cases, with code aligned to `docs/design/` artifacts and any Aurora model present.
+- Consistent naming, structure, and patterns across the codebase.
+- Explicit assumptions, types, and effects.
+- Low coupling through minimal, stable interfaces.
+- Deterministic testability without elaborate setup.
+- Economy of change through small, predictable edits.
+- Deterministic behavior unless nondeterminism is explicitly modeled and documented.
+- Constraint-driven design that uses limitations to create focus rather than workarounds.
+
 ## Cross-skill tasks
 
 - If the request is planning-only, do not produce code changes; use the Planning skill.
@@ -62,15 +144,17 @@ Use this skill when the task involves writing or modifying source code.
 - If the request includes both code and documentation updates, treat it as a coding task and include the documentation updates as part of the deliverables.
 - If the request is to review existing changes, use the Reviewing skill to record findings; implement fixes only when explicitly asked.
 
-## Validation
-
-- The smallest intended change is implemented (no unrelated refactors).
-- Unit and integration tests relevant to the change are added/updated and pass.
-- Formatting and linting tools for the language/ecosystem pass (for Rust: `cargo fmt`, `cargo clippy`).
-- The change does not introduce new panics/unchecked failures unless justified by explicit invariants.
-- Logging is useful for troubleshooting and does not leak secrets.
-- Security, reliability, and quality expectations remain compatible with [Code Review Checklists and Principles](../CodeChecklistsAndPrinciples.md).
-
 ## Glossary
 
-See the shared [Skills glossary](../GLOSSARY.md).
+- Common review terms (for example `Pass`, `Fail`, `N/A`, `Evidence`, `Severity`, and `P0`-`P3`) are defined in the [Skills glossary](../GLOSSARY.md).
+- `Details`: A concise statement of the specific condition that caused a review item to fail.
+- `Risk`: The expected negative outcome if the failed condition remains unresolved, including impact.
+- `Smallest Safe Fix`: The minimum change required to eliminate the failure without introducing new risk.
+- `Verification Guidance`: Explicit steps to prove that a fix works and that regressions were not introduced.
+- `Trust Boundary`: A point where data crosses between actors, systems, or components with different trust levels.
+- `Dependency Drift`: Unintended changes in dependency versions or resolution over time or across environments.
+- `Reproducible Build`: A build process that yields equivalent resolved dependencies and artifacts for the same inputs across machines and time.
+- `Unit`: The smallest independently testable construct, such as a function, type, class, or module.
+- `Encoding`: Transforming data so it is safely interpreted in its target context as data, not executable instructions. Encoding must match the target context and does not replace signing, validation, or authentication.
+- `Error`: A situation in which the expected state is not the actual state.
+- `Exception`: A situation that could not be predicted and cannot be safely handled in code.
