@@ -1,6 +1,6 @@
 ---
 name: architecture
-description: Use this skill when you need to create or update the architecture, including Aurora models, of a system, project, or organization.
+description: Use this skill when creating or updating the architecture of a system, project, or organization, including Aurora models and supporting design artifacts.
 ---
 
 # Architecture Skill
@@ -32,7 +32,7 @@ description: Use this skill when you need to create or update the architecture, 
 
 ## Aurora
 
-The Aurora modeling system provides a structured way to capture architectural elements (like missions, drivers, requirements) and their relationships in a formalized, easy to reason about model.
+The Aurora modeling system captures architectural elements—such as missions, drivers, requirements, and their relationships—in a formal model that is easy to reason about.
 
 Details on the Aurora modeling system are in the [Aurora instructions](../../aurora/Aurora.instructions.md).
 
@@ -48,21 +48,22 @@ Details on the Aurora modeling system are in the [Aurora instructions](../../aur
 
 ## Deliverables
 
-- The architecture should be rooted in a `docs/design/Requirements.md` document that captures the requirements and constraints that the architecture is designed to satisfy and i sprovided by the user. This document should be maintained and updated as requirements evolve.
-- One or more Aurora models and supporting documentation that capture the detailed architecture of the project. To manage complexity in larger projects, multiple models may be used and may refer to each other.
-- Supporting documentation that captures architectural decisions, trade-offs, and rationale. This may include ADRs, hardware specifications, and other relevant documents that provide context and details supporting the model(s).
-- Models should be located at the default path of `docs/design/aurora/` and follow the standard Aurora structure and naming conventions.
-- Supporting documentation should be located in `docs/design/`, organized in appropriate subdirectories (e.g., `docs/design/adrs/` for Architectural Decision Records).
+- Root the architecture in `docs/design/Requirements.md`, provided by the user, which captures the requirements and constraints the architecture must satisfy. Maintain this document as requirements evolve.
+- Produce one or more Aurora models and any supporting documentation needed to capture the architecture in enough detail to guide implementation. Use multiple models only when they reduce complexity and can be kept clearly related.
+- Capture architectural decisions, trade-offs, and rationale in supporting documentation. This may include ADRs, hardware specifications, and other reference material needed to understand or justify the model.
+- Store Aurora models under `docs/design/aurora/`, following the standard Aurora structure and naming conventions.
+- Store supporting documentation under `docs/design/`, organized into appropriate subdirectories (for example, `docs/design/adrs/` for Architectural Decision Records).
 
 ## Operating Procedure
 
-1. Confirm the task scope, stakeholders, constraints, and success criteria from `docs/design/Requirements.md` and the user request; if critical information is missing, stop and get clarification before modeling.
-2. Inspect the existing architecture artifacts under `docs/design/` and `docs/design/aurora/`; update existing documents and models in place unless a new architectural boundary requires a separate model.
-3. Capture or update supporting design documentation for major assumptions, constraints, external dependencies, trust boundaries, and architectural decisions before or alongside the model changes.
-4. Create or update Aurora models under `docs/design/aurora/` using the full Aurora instructions, canonical card types, and canonical relationships by default; introduce non-canonical elements only when no canonical option is semantically correct.
-5. Keep terminology, identifiers, and references consistent across requirements, supporting documentation, and Aurora artifacts so that every important decision and constraint is traceable to a single source of truth.
-6. Review the resulting architecture against the deliverables and validation checklists in this skill, confirming that the model and documents are sufficient to guide implementation without guesswork.
-7. If the request also includes implementation work, finish the architecture phase first, then switch to the Coding skill for the implementation phase.
+1. Confirm the task scope, stakeholders, constraints, and success criteria from `docs/design/Requirements.md` and the user request. If critical information is missing, stop and get clarification before modeling.
+2. Inspect existing architecture artifacts under `docs/design/` and `docs/design/aurora/`. Update them in place unless a genuinely new architectural boundary warrants a separate model.
+3. Capture or update supporting design documentation for assumptions, constraints, external dependencies, trust boundaries, and key decisions before or alongside the model changes.
+4. Create or update Aurora models under `docs/design/aurora/` using the full Aurora instructions. Prefer canonical card types and relationships; introduce non-canonical elements only when no canonical option is semantically correct and the user agrees.
+5. Keep terminology, identifiers, and references consistent across requirements, supporting documentation, and Aurora artifacts so that each important decision and constraint traces back to a single source of truth.
+6. Include external references—such as standards, RFCs, or third-party documentation—when they materially support the architecture, and link them to the relevant model elements for context and traceability.
+7. Review the result against the deliverables and validation checklists in this skill, confirming that the model and supporting documents are complete enough to guide implementation without guesswork.
+8. If the request also includes implementation work, complete the architecture phase first, then switch to the Coding skill for implementation.
 
 ## Validation Checklists
 
