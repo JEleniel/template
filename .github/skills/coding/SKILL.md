@@ -87,6 +87,7 @@ description: Use this skill when writing or modifying source code.
     - Coverage target (aspirational): aim for 90%+ coverage on functional code when practical.
 - Notes added for the documentation writer explaining changes, new features, and other relevant information for the project documentation.
 - Linting, formatting, and static analysis checks are passing.
+- Create, if necessary, and maintain a `docs/design/Tests.md` file that lists the modules and their associated tests, including a brief description of what each test covers. This file serves as a high-level overview of the testing strategy and can be referenced by other skills for planning and review purposes.
 
 ## Operating Procedure
 
@@ -97,6 +98,8 @@ description: Use this skill when writing or modifying source code.
 5. Run the relevant formatting, linting, static analysis, and test commands for the affected language or ecosystem, and fix any issues introduced by the change. Repo instructions require verification before completion; file-specific instructions define language- and file-specific checks.
 6. Record any documentation notes or follow-up information needed to explain behavior changes, new features, or operational impact.
 7. If the request also requires architecture, planning, documentation-only work, or formal review output, switch to the appropriate skill for that phase.
+
+- Note: If present, you can run `./.github/violations.sh` to check for oversize files or functions as well as small functions that may be candidates for cleanup.
 
 ## Validation Checklists
 

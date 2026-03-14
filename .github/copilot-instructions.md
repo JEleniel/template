@@ -49,6 +49,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 ## Operating Assumptions/Constraints
 
 - Empirical evidence has shown that patches >50 lines fail >80% of the time, resulting in falling back to the smaller patches required here.
+- Every restriction in the instructions in this repository have been put in place to enforce solid engineering practices, avoid known issues, and are backed by empirical evidence.
 - The same evidence has shown that multi-file patches corrupt files frequently, most often creating duplicate content.
 - All repos where these instructions are used will have validation, linting, and formatting tools appropriate to the project.
 
