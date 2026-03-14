@@ -19,14 +19,14 @@ description: Use this skill when writing or modifying source code.
 - Prefer mature, well-supported dependencies with GPL, MIT, or Apache-2.0 licenses.
     - Well-maintained heuristic (use judgment; not a checklist):
         - Active and responsive maintenance (issues/PRs triaged; CI is healthy).
-        - Clear compatibility story (MSRV/edition/features) that matches the workspace.
+        - Clear compatibility story (language version, runtime, platform, and feature support) that matches the workspace.
         - Security posture is solid (no known unfixed advisories; timely fixes when issues occur).
         - Adoption is meaningful (downstream usage and/or strong community reputation).
         - Documentation quality is good (README, examples, and changelog/release notes).
-        - Exception: clearly stable/feature-complete crates MAY be acceptable with explicit justification.
+        - Exception: clearly stable or feature-complete dependencies MAY be acceptable with explicit justification.
 - Dependency management:
-    - Prefer the latest stable crate versions, unless constrained by compatibility, MSRV, or security response.
-    - Add dependencies at the narrowest practical scope (package-level, not workspace-wide) unless multiple crates truly share them.
+    - Prefer the latest stable dependency versions, unless constrained by compatibility, platform support, or security response.
+    - Add dependencies at the narrowest practical scope supported by the ecosystem unless multiple packages or components truly share them.
     - Avoid new dependencies when the standard library or existing dependencies already solve the problem.
 
 ## Errors and logging
