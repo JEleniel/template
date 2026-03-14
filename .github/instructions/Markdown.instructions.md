@@ -5,6 +5,7 @@ applyTo: '*.md'
 # Markdown Style Guide
 
 If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) is the source of truth for formatting.
+When a consuming platform or tool requires a conflicting Markdown convention, follow the consumer's requirements.
 
 ## Guidelines
 
