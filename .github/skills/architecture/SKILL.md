@@ -69,30 +69,29 @@ Details on the Aurora modeling system are in the [Aurora instructions](../../aur
 
 ### General Architecture Checklist
 
-- ADRs, tradeoffs, and rejected alternatives are captured.
-- Authoritative and non-authoritative data sources designed.
-- Clean modularization, separation of concerns, and isolation of state.
+- ADRs, trade-offs, and rejected alternatives captured.
+- Authoritative and non-authoritative data sources identified.
+- Components decomposed with clear responsibilities, separation of concerns, and isolated state.
 - Clearly stated assumptions and invariants.
 - Data provenance and lineage requirements captured.
 - Defined versioning and compatibility strategy.
-- Dependencies Are Intentional.
-- Deployment and rollback strategy planned.
+- Intentional dependencies.
+- Planned deployment and rollback strategy.
 - Documented inputs and outputs.
-- Failure mode and remediation analysis completed.
+- Failure modes and remediation analysis completed.
 - Identified stakeholders and external actors.
-- Loose coupling and high cohesion.
-- Modeled data flow and transformation points.
-- NFR Coverage Is Concrete.
-- Performance, availability, and degradation behavior expectations.
+- Loosely coupled interdependencies with clear boundaries and contracts.
+- Modeled data flows and transformation points.
+- Concrete NFR coverage.
+- Defined performance, availability, and degradation expectations.
 - Planned horizontal and vertical scaling characteristics.
 - Planned observability (what must be measurable).
-- Purpose driven APIs.
-- Responsibilities Are Cohesive.
-- Risks, threat models, security controls, and mitigations.
+- Purpose-driven APIs.
+- Risks, threat models, security controls, and mitigations captured.
 - System evolution strategy.
 - Testability requirements.
 - Traceable ownership and responsibility.
-- Well defined system, domain, and trust boundaries.
+- Well-defined system, domain, and trust boundaries.
 
 ### Architectural Domain Coverage Checklist
 
@@ -113,10 +112,13 @@ Details on the Aurora modeling system are in the [Aurora instructions](../../aur
 
 ### External References and Link Integrity Checklist
 
-- Aurora External References Resolve
-- Accompanying Document Links Resolve
-- Model-to-Document Links are Consistent
-- Reference Context Is Explicit
+- Resolvable Aurora external references.
+- Resolvable accompanying document links.
+- Consistent model-to-document links.
+- Explicit reference context.
+- Clear authoritative references.
+- Specific, useful references.
+- Stable reference links outside the workspace.
 
 ## Cross-skill tasks
 
