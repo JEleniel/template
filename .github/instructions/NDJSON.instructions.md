@@ -1,6 +1,6 @@
 ---
 description: 'Agent directives for NDJSON (newline-delimited JSON) formatting and handling.'
-applyTo: '*.ndjson'
+applyTo: '**/*.ndjson'
 ---
 
 # NDJSON Formatting & Handling

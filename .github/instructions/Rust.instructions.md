@@ -27,14 +27,26 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 
 - Apply these rules to Rust code you write or modify. Do not rewrite unrelated existing code solely for conformance.
 - Do not use `unwrap`, `expect`, `panic`, or similar in non-test code unless explicitly instructed.
-    - Exception: `todo!()` and `unimplemented!()` are permitted for clearly unimplemented paths that must fail fast and communicate intent.
 - Add documentation comments for new modules and new public items.
 - Avoid `unsafe` unless a specific API requires it.
-- Do not use functions that _only_ return a constant value.
 - When configuring logging, write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr. Optionally log to a structured file.
+- Unit testing exercises the inside of a module. Integration testing exercises the outside.
+- Place tests in a separate file named `<module>_tests.rs` in a subfolder under the module named `tests/` and bring them in using the `path` directive.
+
+## Prohibitions
+
+- You MUST NOT write functions that _only_ return a constant value.
+- You MUST NOT `map_err`, wrap errors, flatten errors, or write functions that convert or wrap errors. Use `thiserror` `#[from]` directives instead along with the `?` operator.
+- You MUST NOT expose the internals of a module for any reason.
+- You MUST NOT let a source file exceed 500 lines or a single function exceed 50 lines. You may use the `./.github/violations.sh` script to verify compliance.
+- You MUST NOT write a function that executes a simple calculation or call that is only used once. Just use the call or formula directly.
+- You MUST NOT write multiple paths, functions, or other code that does the same thing. There MUST be one source of truth for any function or capability.
+- You MUST NOT use any form of shared data across task or thread boundaries; all communication must use channels or similar. Use of `mutex` is a red flag for this.
 
 ## Error Handling
 
+- You MUST NOT swallow errors. They MUST all be handled or logged at minimum.
+- Any error that can be handled and recovered from should be.
 - Library code SHOULD return typed errors (prefer `thiserror`).
 - Executables and application boundaries (anywhere control leaves our code) MUST use `anyhow`.
 - All errors MUST be either handled or logged. The code should crash only if there is no choice.
