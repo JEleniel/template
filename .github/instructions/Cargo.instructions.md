@@ -44,7 +44,6 @@ app_id = "org.crystultima.<workspace_name>"
 - Avoid `[patch]` except as a temporary override.
 - Centralize versions in `[workspace.dependencies]`.
 - Keep dependency scope as narrow as possible. Promote dependencies to workspace only if they are actually shared.
-- Keep crates focused; avoid “catch-all” packages.
 - Tune release builds intentionally (`lto`, `codegen-units`, `panic = "abort"` when appropriate).
 - Optimize `[profile.dev]` for faster iteration.
 - Regularly audit dependencies.
@@ -62,10 +61,8 @@ The following libraries are approved for use. Sublibraries include crates that s
 - `config` for configuration file handling
 - `ctrlc` for signal handling
 - `dirs` (preferred) or `directories` for standard config/data/cache directories
-- `tracing` and `tracing-subscriber` for logging
+- `fern` for logging
 - `log` for logging API
-- `ollama-rs` for Ollama access
-- `openssl` or `rustls` (and sublibraries) for TLS
 - `r2d2`, `r2d2_sqlite`, `rusqlite` for SQLite (use `rusqlite` with the `bundled` feature)
 - `reqwest` for HTTP client calls
 - `serde` (and sublibraries), `serde_json` for serialization
