@@ -1,6 +1,6 @@
 ---
 name: coding
-description: Use this skill when writing or modifying source code.
+description: Use this skill when writing or modifying source code, or when documenting tests in a `docs/design/Tests.md` file.
 ---
 
 # Coding Skill
@@ -87,7 +87,26 @@ description: Use this skill when writing or modifying source code.
     - Coverage target (aspirational): aim for 90%+ coverage on functional code when practical.
 - Notes added for the documentation writer explaining changes, new features, and other relevant information for the project documentation.
 - Linting, formatting, and static analysis checks are passing.
-- Create, if necessary, and maintain a `docs/design/Tests.md` file that lists the modules and their associated tests, including a brief description of what each test covers. This file serves as a high-level overview of the testing strategy and can be referenced by other skills for planning and review purposes.
+- Create, if necessary, and maintain a `docs/design/analysis/Tests.md` file that lists the modules and their associated tests, including a brief description of what each test covers. This file should also identify and gaps in coverage, whether they are deliberate, and why.
+
+**Tests.md Example**:
+
+```markdown
+# Test Inventory
+
+## `tests/main_test.rs` tests `main`
+
+- `restart_device_falls_back_cleanly_on_host`: verifies that the host-side restart fallback mechanism works correctly when triggered from the binary entrypoint.
+
+## `tests/configuration_test.rs` tests `configuration`
+
+- `parses_example_configuration`: ensures that the example configuration file is parsed correctly, with all expected fields populated and defaults applied as needed.
+- `configuration_serialization_preserves_unmodeled_sections`: checks that when a configuration written, any sections that are not explicitly modeled in the code are preserved without alteration.
+
+### Gaps
+
+- `configuration` module currently lacks tests for invalid input handling, such as malformed configuration files or missing required fields. This is not deliberate.
+```
 
 ## Operating Procedure
 

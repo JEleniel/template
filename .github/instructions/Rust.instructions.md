@@ -47,8 +47,11 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - Avoid `unsafe` unless a specific API requires it.
 - When configuring logging, write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr. Optionally log to a structured file.
 - Unit testing exercises the inside of a module. Integration testing exercises the outside through public APIs.
-- Unit tests belong in a module-local `tests/` subfolder and may be brought in using the `path` directive.
+- Unit tests belong in a module-local `tests/` subfolder and may be brought in using the `path` directive. Name host-side tests `<module>_host_tests.rs` and device-side tests `<module>_device_tests.rs`. Mock helper modules may be named `mock_<module>.rs`.
 - Integration tests belong in the crate-root `tests/` directory.
+- While using complete words, strive to keep names short and to the point, e.g.:
+    - Instead of `uninitialized_reading_rejects_reads_and_writes` use `unready_reading_rejects_access`
+    - For example, phrases like "reads_and_writes" can be shortened to "access", "sets x when y, sets z when a" becomes "sets_status".
 
 ## Prohibitions
 
@@ -71,3 +74,4 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 ## Acceptance Criteria
 
 - For Rust work, relevant `cargo` checks pass (`fmt`, `clippy`, and targeted `test`).
+- **Important**: In this repository the default tests is configured to flash and run device-side tests. You MUST use the "host-test" alias to run host-side tests.
