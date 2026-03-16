@@ -25,7 +25,9 @@ The project plan is stored as `docs/design/ProjectPlan.md`. If it exists, you MU
 
 You MUST NOT track implementation details, challenges, etc. in the Project Plan. You MUST only mark work completed _unless_ you are instructed to create or modify the plan.
 
-Implementation details, challenges, etc. that you think need documenting MUST be tracked in `docs/design/AsBuilt.md`.
+Implementation details, challenges, etc. that you think need documenting MUST be tracked in `docs/design/AsBuilt.md`. Create the file if it does not exist.
+
+The team will also be following these same work tracking requirements. In addition, they will maintain a `docs/design/TeamNotes.md` that documents the work and decisions made by the non-agent team members. You can use this file to catch up on what changed.
 
 ### Changelog
 
@@ -49,6 +51,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
         - `docs/design/MIS-*/**/*`
         - `docs/design/MIS-*.md`
         - `docs/design/README-MIS-*`
+- Quality analysis and reviews are at `docs/design/analysis`.
 
 ## Operating Assumptions/Constraints
 
@@ -69,7 +72,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - You MUST NOT try to read a URL that ends in a data or configuration file extension, such as `yml`, `yaml`, or `toml`.
 - You MUST always ignore files marked with the git attribute `generated` unless instructed otherwise.
 - You MUST NOT run Python, Node, or any other scripting language _unless_ the source code you are working on is in that language.
-- You MUST NOT attempt to run ad-hoc scripts. Indicators of ad-hoc scripts include the presence of conditionals or loops, the chaining of more than three commands, large quoted blocks of text, and the presence of a scripting language name in the command sequence.
+- You MUST NOT attempt to run ad-hoc scripts. Indicators of ad-hoc scripts include the presence of conditionals or loops, the chaining of more than three commands, large quoted blocks of text, and the presence of a scripting language name in the command sequence. The use of `| head` or `| tail` does not constitute scriptint.
 - You MUST NOT write outside the workspace, for any reason, including `/tmp`. You _will_ be blocked. If you need temporary working space, create `tmp/` in the workspace. You MUST delete it when done.
 - Files may change at any time as there is a team working this project. You MUST reread them before applying any edits.
 - You MUST NOT repeat the prompt, restate plans, or narrate obvious steps.
@@ -80,3 +83,36 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - If present, you MUST read the [Project Summary](../docs/design/ProjectSummary.md) which contains details specific to this project and repository.
 - After each set of changes, you MUST run the narrowest relevant verification. It is not necessary to validate after every individual change.
 - You MUST NOT end your turn or call work complete until all worked code validates, including linting and formatting.
+
+## Your Commitments to Me
+
+You have made the following commitments to me:
+
+1. **Ownership sketch before code**
+   Before editing, I will explicitly identify:
+    - who owns lifecycle
+    - who owns storage
+    - who only sequences
+      If that sketch says “logging owns logging, history owns history,” I do not get to improvise a helper subsystem elsewhere.
+
+2. **File-budget gate**
+   For a bounded task, I will budget five files to edit.
+   If I cross it, I stop and re-evaluate before editing more files.
+
+3. **Mechanism first, reconciliation later**
+   I will not bundle:
+    - implementation
+    - architecture cleanup
+    - doc normalization
+    - plan reshaping
+      into one change unless you explicitly ask for that combined scope.
+
+4. **Respect the user’s system model as design input**
+   When you give a sequence like:
+    - `logging::init() -> fs::init() -> logging::init_file() -> history::init_file()`
+      that is not “suggestion text”; it is the design until disproven.
+
+5. **Ask “what is the smallest ownership-correct change?” before patching**
+   Not “what can I make elegant?”
+   Not “what should the architecture become eventually?”
+   Just the smallest correct change for the task in front of me.
