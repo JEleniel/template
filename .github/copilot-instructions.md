@@ -62,7 +62,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - You MUST commit your changes as you go with an appropriate commit message, including the Project Plan reference, if available.
 - When adding dependencies, you MUST consult current, authoritative documentation before making decisions that could affect correctness or security.
 - You MUST NOT modify `.github/**/*` unless the user asks.
-- You MUST NOT revert changes you did not make.
+- You MUST NOT revert changes you did not make. This includes when you reread a document to make edits. You MUST NOT overwrite these collaborative edits.
 - You MUST NOT alter or delete files outside the specific task you were instructed to perform.
 - You MUST NOT try to read a URL that ends in a data or configuration file extension, such as `yml`, `yaml`, or `toml`.
 - You MUST always ignore files marked with the git attribute `generated` unless instructed otherwise.
