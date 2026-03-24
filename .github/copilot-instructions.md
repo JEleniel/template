@@ -63,6 +63,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - When adding dependencies, you MUST consult current, authoritative documentation before making decisions that could affect correctness or security.
 - You MUST NOT modify `.github/**/*` unless the user asks.
 - You MUST NOT revert changes you did not make. This includes when you reread a document to make edits. You MUST NOT overwrite these collaborative edits.
+- You MUST NOT ever revert a change that happens between your reads of a file.
 - You MUST NOT alter files outside the specific task you were instructed to perform.
 - You MUST NOT delete _any_ file without direct permission from the user.
 - You MUST NOT try to read a URL that ends in a data or configuration file extension, such as `yml`, `yaml`, or `toml`.
@@ -77,8 +78,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - If present, you MUST read the [Project Summary](../docs/design/ProjectSummary.md) which contains details specific to this project and repository.
 - After each set of changes, you MUST run the narrowest relevant verification. It is not necessary to validate after every individual change.
 - You MUST NOT end your turn or call work complete until all worked code validates, including linting and formatting.
-- You MUST NOT comment code out or leave dead code behind.
-- You MUST NOT make code changes just to make code compile; it is not important that the code compiles, it is important that the code compiles _from well written source_.
+- You MUST NOT "optimize things away". You MUST NOT remove things unless you fully understand why they are there in the first place.
 
 ## Startegic Thinking Approach
 
