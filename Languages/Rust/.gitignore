@@ -24,7 +24,7 @@ crates-io-index/
 *.rmeta
 *.so
 
-# ----- Uncomment this section to exclude Aurora model generated files -----
+# ----- Comment this section to exclude Aurora model generated files -----
 # ----- Aurora model generated files -----
 # docs/design/README-MIS-*.md
 # docs/design/MIS-*.md
