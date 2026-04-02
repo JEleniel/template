@@ -1,12 +1,12 @@
 # Project specific
-# Add files and directories specific to your project that should be ignored here
+*.zip
 
-# ----- Uncomment this section to exclude Aurora model generated files -----
+# ----- Comment this section to include Aurora model generated files -----
 # ----- Aurora model generated files -----
-# docs/design/README-MIS-*.md
-# docs/design/MIS-*.md
-# docs/design/MIS-*/**/*
-# docs/design/aurora/MIS-*/Compact.json
+docs/design/README-MIS-*.md
+docs/design/MIS-*.md
+docs/design/MIS-*/**/*
+docs/design/aurora/MIS-*/Compact.json
 # ----- End of Aurora model generated files -----
 
 # Secrets, credentials, and settings
