@@ -1,0 +1,8 @@
+#ifndef IDENTITY_H
+#define IDENTITY_H
+
+#define APPLICATION_ID "@APPLICATION_ID@"
+#define APPLICATION_NAME "@APPLICATION_NAME@"
+#define VERSION "@VERSION@"
+
+#endif
